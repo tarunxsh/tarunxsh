@@ -1,6 +1,7 @@
 Joined Github **3** years ago.
 
-Since then I pushed **234** commits, opened **6** issues, submitted **18** pull requests, contributed to **3** public repositories, have **24** personal projects and **5** gists. 
+Since then I pushed **236** commits, opened **6** issues, submitted **18** pull requests, contributed to **3** public repositories, have **24** personal projects and **5** gists. 
+
 Most used languages across my projects:
 
 ![Python](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233572A5&message=Python%EF%B8%B168.9%25)
