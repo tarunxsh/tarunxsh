@@ -1,6 +1,6 @@
 Joined Github **5** years ago.
 
-Since then I pushed **965** commits, opened **9** issues, submitted **222** pull requests, contributed to **20** public repositories, have **28** personal projects and **5** gists. 
+Since then I pushed **966** commits, opened **9** issues, submitted **222** pull requests, contributed to **20** public repositories, have **28** personal projects and **5** gists. 
 
 Most used languages across my projects:
 
@@ -13,4 +13,4 @@ Most used languages across my projects:
 ![SCSS](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23c6538c&message=SCSS%EF%B8%B11.2%25)
 ![Other](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23ededed&message=Other%EF%B8%B13.5%25)
 
-<p align="right"><sub>Generated using <a href="https://github.com/marketplace/actions/profile-readme-stats">teoxoy/profile-readme-stats</a></sub></p>
+<p align="right"><sub>Generated using <a href="https://github.com/marketplace/actions/profile-readme-stats-mod">tarunesh1234/profile-readme-stats-mod</a></sub></p>
