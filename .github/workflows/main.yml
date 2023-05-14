@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Profile Readme Stats Mod
-      uses: tarunesh1234/profile-readme-stats-mod@profile-readme-stats-mod-includeOrgRepos-support
+      uses: tarunesh1234/profile-readme-stats-mod@v1.1.0
       with:
         token: ${{ secrets.USER_TOKEN }}
         includeForks: true
