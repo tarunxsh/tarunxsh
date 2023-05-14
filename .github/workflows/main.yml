@@ -12,11 +12,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Generate README.md
-      uses: teoxoy/profile-readme-stats@v1.1
+    - name: Profile Readme Stats Mod
+      uses: tarunesh1234/profile-readme-stats-mod@profile-readme-stats-mod-includeOrgRepos-support
       with:
         token: ${{ secrets.USER_TOKEN }}
         includeForks: true
+        includeOrgRepos: true
     - name: Update README.md
       run: |
         if [[ "$(git status --porcelain)" != "" ]]; then
