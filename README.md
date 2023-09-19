@@ -4,7 +4,7 @@ Since then I pushed **1190** commits, opened **9** issues, submitted **312** pul
 
 Most used languages across my projects:
 
-![JavaScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23f1e05a&message=JavaScript%EF%B8%B151.3%25)
+![JavaScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23f1e05a&message=JavaScript%EF%B8%B151.2%25)
 ![Apex](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%231797c0&message=Apex%EF%B8%B118.6%25)
 ![Python](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233572A5&message=Python%EF%B8%B113.8%25)
 ![TypeScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233178c6&message=TypeScript%EF%B8%B17.6%25)
