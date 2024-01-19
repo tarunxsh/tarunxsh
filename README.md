@@ -1,11 +1,11 @@
 Joined Github **6** years ago.
 
-Since then I pushed **1410** commits, opened **9** issues, submitted **408** pull requests, contributed to **34** public repositories, have **46** personal projects and **8** gists. 
+Since then I pushed **1422** commits, opened **9** issues, submitted **416** pull requests, contributed to **35** public repositories, have **46** personal projects and **8** gists. 
 
 Most used languages across my projects:
 
 ![JavaScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23f1e05a&message=JavaScript%EF%B8%B138.4%25)
-![Python](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233572A5&message=Python%EF%B8%B125.1%25)
+![Python](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233572A5&message=Python%EF%B8%B125%25)
 ![Apex](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%231797c0&message=Apex%EF%B8%B114.5%25)
 ![TypeScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233178c6&message=TypeScript%EF%B8%B17.8%25)
 ![HTML](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23e34c26&message=HTML%EF%B8%B14.6%25)
