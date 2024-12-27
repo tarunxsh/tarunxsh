@@ -69,17 +69,17 @@ export const META = {
     archive: {
       title: "All Posts",
       description: "Here are Tarunesh's all posts",
-      ogImage: "/images/page-meta/archive.png",
+      ogImage: "preview.png",
     },
     links: {
       title: "Tarunesh's Links",
       description: "Here are Tarunesh's Links",
-      ogImage: "/images/page-meta/links.png",
+      ogImage: "preview.png",
     },
     about: {
       title: "About Me",
       description: "Here is Tarunesh's self-introduction",
-      ogImage: "/images/page-meta/about.png",
+      ogImage: "preview.png",
     },
   },
 }
