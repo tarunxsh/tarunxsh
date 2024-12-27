@@ -1,0 +1,29 @@
+---
+import MainLayout from "~/layouts/main.astro"
+import Post from "./post.astro"
+
+interface Props {
+  posts: any[]
+  tag: string
+}
+
+const { posts, tag } = Astro.props
+
+const filteredPosts = posts.filter((post: any) => post.data.tags?.includes(tag))
+---
+
+<MainLayout>
+  <div class="my-9 mt-2 text-2xl font-semibold">#{tag}</div>
+
+  {
+    filteredPosts.length > 0 ? (
+      <ul class="space-y-4">
+        {filteredPosts.map((post: any) => (
+          <Post post={post} dateFormat="YYYY-MM-DD" dateWidth="w-32" />
+        ))}
+      </ul>
+    ) : (
+      <p class="text-gray-500">No posts found for tag</p>
+    )
+  }
+</MainLayout>

@@ -1,0 +1,22 @@
+---
+import LinkCard from "~/components/astro/link-card.astro"
+import { META } from "~/config"
+import { links } from "~/config/links"
+import MainLayout from "~/layouts/main.astro"
+
+const pageMeta = META.pageMeta
+---
+
+<MainLayout
+  title={pageMeta.links.title}
+  description={pageMeta.links.description}
+  ogImage={pageMeta.links.ogImage}
+  needComment={true}
+>
+  <h3 class="my-10 text-center text-xl font-bold">Tarunesh's Links</h3>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {links.map((link) => <LinkCard {...link} />)}
+  </div>
+  <div class="prose max-w-3xl dark:prose-invert"></div>
+</MainLayout>

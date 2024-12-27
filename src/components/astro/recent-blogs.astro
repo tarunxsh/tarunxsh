@@ -1,0 +1,18 @@
+---
+import { LATEST_POSTS_LIMIT } from "~/config"
+import { getPosts } from "~/utils"
+import Post from "./post.astro"
+
+const allPosts = await getPosts()
+const posts = allPosts.slice(0, LATEST_POSTS_LIMIT)
+---
+
+<div class="my-10">
+  <h3 class="my-5 text-2xl font-bold">Latest Posts</h3>
+
+  {
+    posts.map((post: any) => (
+      <Post post={post} dateFormat="Mm DD, YYYY" dateWidth="w-32" />
+    ))
+  }
+</div>

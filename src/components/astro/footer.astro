@@ -1,0 +1,24 @@
+---
+import { OWNER, SOCIAL_LINKS } from "~/config"
+import Icon from "./icon.astro"
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="select-none py-10">
+  <div class="flex justify-between">
+    <p>&copy; {currentYear} {OWNER.name}</p>
+    <div class="social-links mt-1 flex space-x-2">
+      {
+        Object.entries(SOCIAL_LINKS).map(([icon, link]) => (
+          <Icon
+            icon={icon}
+            link={link}
+            size={18}
+            class="borer-2 border-red-500 md:block"
+          />
+        ))
+      }
+    </div>
+  </div>
+  <hr class="mt-1" />
+</footer>

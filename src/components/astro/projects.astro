@@ -1,0 +1,12 @@
+---
+import LinkCard from "~/components/astro/link-card.astro"
+import { links } from "~/config/links"
+---
+
+<div class="my-10">
+  <h3 class="my-5 text-2xl font-bold">Projects</h3>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {links.map((link) => <LinkCard {...link} />)}
+  </div>
+</div>

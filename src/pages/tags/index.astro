@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content"
+import MainLayout from "~/layouts/main.astro"
+import { getUniqueTags } from "../../utils"
+
+const posts = await getCollection("blog", (post) => !post.data.hide)
+const tags = getUniqueTags(posts)
+---
+
+<MainLayout>
+  <div class="text-lg text-gray-600">
+    {
+      tags.map((tag: string) => (
+        <a
+          href={`/tags/${tag}`}
+          class="visited:text-purple-500/90 hover:underline md:my-2"
+        >
+          <p>#{tag}</p>
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>

@@ -1,0 +1,18 @@
+---
+import { META } from "~/config"
+import AboutContent from "~/config/about.mdx"
+import MainLayout from "~/layouts/main.astro"
+
+const pageMeta = META.pageMeta
+---
+
+<MainLayout
+  title={pageMeta.about.title}
+  description={pageMeta.about.description}
+  ogImage={pageMeta.about.ogImage}
+  needComment={true}
+>
+  <div class="prose max-w-3xl dark:prose-invert">
+    <AboutContent />
+  </div>
+</MainLayout>

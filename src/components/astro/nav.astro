@@ -1,0 +1,25 @@
+---
+import { NAV_ITEMS } from "~/config"
+import NavLink from "./navLink.astro"
+---
+
+<div
+  class="mb-10 mt-4 flex select-none gap-4 overflow-x-auto whitespace-nowrap pb-1 text-lg [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+>
+  {
+    NAV_ITEMS.map(
+      (nav) =>
+        nav.enabled && (
+          <NavLink
+            href={nav.link}
+            aria-label={nav.label}
+            class="hover:underline hover:underline-offset-4"
+            data-umami-event={`nav-home`}
+            title={nav.label}
+          >
+            <p>{nav.label}</p>
+          </NavLink>
+        ),
+    )
+  }
+</div>

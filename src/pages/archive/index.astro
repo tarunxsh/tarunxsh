@@ -1,0 +1,41 @@
+---
+import Post from "~/components/astro/post.astro"
+import { META } from "~/config"
+import MainLayout from "~/layouts/main.astro"
+import { getPosts } from "~/utils"
+
+const pageMeta = META.pageMeta
+
+const posts = await getPosts()
+
+const postsByYear = posts.reduce(
+  (acc: Record<string, any[]>, post: any) => {
+    const year = new Date(post.data.pubDate).getFullYear().toString()
+    if (!acc[year]) {
+      acc[year] = []
+    }
+    acc[year].push(post)
+    return acc
+  },
+  {} as Record<string, any[]>,
+)
+
+const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
+---
+
+<MainLayout
+  title={pageMeta.archive.title}
+  description={pageMeta.archive.description}
+  ogImage={pageMeta.archive.ogImage}
+>
+  {
+    years.map((year) => (
+      <div class="year-group my-8">
+        <h2 class="my-4 text-2xl font-bold">{year}</h2>
+        {postsByYear[year].map((post: any) => (
+          <Post post={post} dateFormat="Mm DD" dateWidth="w-20" />
+        ))}
+      </div>
+    ))
+  }
+</MainLayout>

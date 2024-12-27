@@ -1,0 +1,11 @@
+import { OWNER } from "~/config"
+export const title = "Hello, I'm Tarunesh"
+
+<h3 class="my-10 text-xl font-bold">{title}</h3>
+<p>
+  Have fun, if you have any questions you can contact me at
+  <a class="text-blue-500 underline" href={`mailto:${OWNER.email}`}>
+    {OWNER.email}
+  </a>
+  .
+</p>

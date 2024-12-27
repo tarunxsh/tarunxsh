@@ -1,0 +1,38 @@
+---
+import MainLayout from "~/layouts/main.astro"
+import { formatDate } from "~/utils"
+const { id, title, description, pubDate, updatedDate, heroImage, tags } =
+  Astro.props
+---
+
+<MainLayout>
+  <article
+    class="font-body prose w-full max-w-3xl overflow-hidden dark:prose-invert"
+  >
+    <div class="flex flex-col gap-2">
+      <h2
+        class="!my-0 text-3xl font-semibold"
+        transition:name={`post-title-${id}`}
+      >
+        {title}
+      </h2>
+      <div class="my-3 text-gray-500 dark:text-white/80">
+        {formatDate(pubDate)}
+      </div>
+    </div>
+
+    <div class="my-6">
+      <slot />
+    </div>
+
+    <div class="space-x-3 pb-10 text-sm text-gray-500">
+      {
+        tags.map((tag: string) => (
+          <a href={`/tags/${tag}`} class="no-underline">
+            <p class="inline-block hover:scale-105">#{tag}</p>
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>
