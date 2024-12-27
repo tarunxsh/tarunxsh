@@ -13,8 +13,8 @@ const postSchema = z.object({
 })
 
 const blog = defineCollection({
-  // Load Markdown and MDX files in the `src/content/blog/` directory.
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
+  // Load Markdown and MDX files in the `./content/blog/` directory.
+  loader: glob({ base: "./content/blog", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
   schema: postSchema,
 })

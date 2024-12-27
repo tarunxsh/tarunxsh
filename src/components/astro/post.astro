@@ -16,11 +16,15 @@ import { formatDate } from "~/utils"
   class="my-3 flex visited:text-purple-500/90 md:my-2"
 >
   <p
-    class={`flex ${dateWidth} flex-shrink-0 truncate text-gray-500 dark:text-gray-400`}
+    class={`flex line-clamp-2 text-lg ${dateWidth} flex-shrink-0 truncate text-gray-500 dark:text-gray-400`}
   >
     <time datetime={post.data.pubDate.toISOString()}
       >{formatDate(post.data.pubDate, dateFormat)}</time
     >
   </p>
-  <p class="line-clamp-2 text-lg hover:underline">{post.data.title}</p>
+  <div class="flex flex-col md:flex-row justify-between w-full">
+    <p class="line-clamp-2 text-lg hover:underline">{post.data.title}</p>
+    {true && <p class="line-clamp-2 text-lg text-gray-500">...coming soon</p>}
+
+  </div>
 </a>
