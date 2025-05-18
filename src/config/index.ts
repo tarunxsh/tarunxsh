@@ -143,3 +143,27 @@ export const BLOG_ROLL = [
   "https://blog.gypsydave5.com/posts/",
   "https://jamesg.blog/",
 ]
+
+export const links = [
+  {
+    name: "Simpplr",
+    link: "https://www.simpplr.com/integrations-apis/",
+    description: "AI-powered employee experience platform",
+    avatar: "/links/simpplr.png",
+  },
+  {
+    name: "Blogspot",
+    link: "https://github.com/tarunxsh/blogspot",
+    description: "The blogging platform for developers",
+    avatar: "/links/laptop-minimal.svg",
+  },
+]
+
+export const Favlinks = [
+  {
+    name: "Rejections",
+    link: "https://youtu.be/bvcP4dL5mjY?t=280",
+    description: "Why Chase Rejection by Advait Paliwal",
+    avatar: "/links/youtube.svg",
+  },
+]

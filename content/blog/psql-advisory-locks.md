@@ -1,5 +1,5 @@
 ---
-title: "PostgreSQL advisory locks"
+title: "Notes on PostgreSQL advisory locks"
 pubDate: 2025-01-02
 description: "Exploring postgreSQL advisory locks"
 ogImage: "https://tarunxsh.xyz/profile.jpeg"
@@ -7,11 +7,8 @@ author: "Tarunesh Gautam"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "alt"
-tags: ["postgreSQL", "databases"]
+tags: ["postgreSQL", "databases", "notes", "wip"]
 ---
-
-Full blog post **soon....** Till then you can refer my notes on this 
-
 
 ### WIP DRAFT
 

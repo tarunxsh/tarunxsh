@@ -1,14 +1,8 @@
 ---
-import LinkCard from "~/components/astro/link-card.astro"
-import { META, BLOG_ROLL } from "~/config"
-import { links } from "~/config/links"
+import { META, BLOG_ROLL, Favlinks as links } from "~/config"
 import MainLayout from "~/layouts/main.astro"
+import LinkCard from "~/components/astro/link-card.astro"
 
-import { getCollection } from "astro:content"
-import { getUniqueTags } from "../../utils"
-
-const posts = await getCollection("blog", (post) => !post.data.hide)
-const tags = getUniqueTags(posts)
 
 const pageMeta = META.pageMeta
 ---
@@ -19,11 +13,11 @@ const pageMeta = META.pageMeta
   ogImage={pageMeta.links.ogImage}
   needComment={true}
 >
-  <!-- <h3 class="my-10 text-center text-xl font-bold">Tarunesh's Links</h3> -->
+  <h3 class="my-10 text-center text-xl font-bold">Tarunesh's Links</h3>
 
-  <!-- <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
     {links.map((link) => <LinkCard {...link} />)}
-  </div> -->
+  </div>
 
   <div class="text-lg text-gray-600">
     <h3 class="my-5 text-xl font-bold">#BlogRoll</h3>
