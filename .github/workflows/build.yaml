@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm cache delete
-          pnpm install
+          pnpm install --frozen-lockfile
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Build with Astro
