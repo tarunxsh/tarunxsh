@@ -4,7 +4,7 @@ import { ClientRouter } from "astro:transitions"
 import { PatternBackground } from "~/components/react/pattern-background"
 import { META } from "~/config"
 
-const { title, description, ogImage } = Astro.props
+const { title, description, ogImage, transitions=true } = Astro.props
 
 const ogImageURL = new URL(ogImage, Astro.site).href
 const permalink = new URL(Astro.url.pathname, Astro.site).href
@@ -69,7 +69,7 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
       document.addEventListener("astro:page-load", setTheme)
     </script>
 
-    <ClientRouter />
+    {transitions && <ClientRouter />}
   </head>
   <body
     class="flex min-h-screen w-full justify-center px-6 dark:bg-[#121212] dark:text-white md:px-0"
