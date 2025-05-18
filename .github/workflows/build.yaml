@@ -44,7 +44,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm cache delete && pnpm install # --frozen-lockfile
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Build with Astro
