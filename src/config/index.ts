@@ -103,6 +103,36 @@ export const skills = [
 ]
 
 export const BLOG_ROLL = [
+  "https://robertheaton.com/",
+  "https://probablydance.com/",
+  "https://hoverbear.org/tags/",
+  "https://lethain.com/",
+  "https://2ality.com/",
+  "https://www.bryanwongyk.com/",
+  "https://gagan93.me/blog/",
+  "https://brunoscheufler.com/",
+  "https://jackpordi.com/",
+  "https://gauravsarma.com/",
+  "https://bonesmoses.org/",
+  "https://www.enterprisedb.com/blog",
+  "https://neon.tech/postgresql/tutorial",
+  "https://nikhilism.com/",
+  "https://mrale.ph/",
+  "https://www.mscharhag.com/",
+  "https://geohot.github.io/blog/",
+  "https://blog.6nok.org/",
+  "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/",
+  "https://crowdhailer.me/",
+  "https://blog.startifact.com/archive/",
+  "https://backend.cafe/",
+  "https://loige.co/blog/",
+  "https://adventures.nodeland.dev/archive/",
+  "https://advancedweb.hu/archive.html",
+  "https://danmackinlay.name/",
+  "https://tzx.notion.site/dev-blog",
+  "https://marcin.juszkiewicz.com.pl/archives",
+  "https://leandromoreira.com/",
+  "https://www.allthingsdistributed.com/articles.html",
   "https://archive.leerob.io/blog",
   "https://jvns.ca/",
   "https://blog.pragmaticengineer.com/",
@@ -142,7 +172,7 @@ export const BLOG_ROLL = [
   "https://zenhabits.net/archives/",
   "https://blog.gypsydave5.com/posts/",
   "https://jamesg.blog/",
-]
+];
 
 export const links = [
   {
