@@ -39,6 +39,9 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
 
+    <!-- umami analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="69497b5a-8deb-44b7-bb2b-d6be9df1ac20"></script>
+
     <script is:inline>
       const setTheme = () => {
         const theme =
