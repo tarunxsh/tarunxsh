@@ -196,4 +196,10 @@ export const Favlinks = [
     description: "Why Chase Rejection by Advait Paliwal",
     avatar: "/links/youtube.svg",
   },
+  {
+    name: "The Path to Mastery",
+    link: "https://www.youtube.com/live/OFKiVEl-cYw",
+    description: "Anand Chitipothu #FOSSHack2020 | FOSS United | FOSS in India",
+    avatar: "/links/youtube.svg",
+  },
 ]
