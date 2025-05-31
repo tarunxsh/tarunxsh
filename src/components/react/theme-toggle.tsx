@@ -11,8 +11,7 @@ export function ThemeToggle() {
   }
 
   const handleToggleClick = () => {
-    const element = document.documentElement
-    element.classList.toggle("dark")
+    document.documentElement.classList.toggle("dark");
     updateTheme()
   }
 

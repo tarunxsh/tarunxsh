@@ -1,0 +1,23 @@
+---
+import { META, captures } from "~/config"
+import MainLayout from "~/layouts/main.astro"
+
+
+const pageMeta = META.pageMeta
+---
+
+<MainLayout
+  title={pageMeta.life.title}
+  description={pageMeta.life.description}
+  ogImage={pageMeta.life.ogImage}
+>
+  <div class="columns-2 gap-x-6">
+    {captures.map((src, idx) => (
+      <img
+        src={src}
+        alt={`Photo ${idx + 1}`}
+        class="w-full h-auto mb-6 block rounded shadow-md break-inside-avoid"
+      />
+    ))}
+  </div>
+</MainLayout>

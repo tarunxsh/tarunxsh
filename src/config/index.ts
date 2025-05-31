@@ -81,6 +81,16 @@ export const META = {
       description: "Here is Tarunesh's self-introduction",
       ogImage: "preview.png",
     },
+    sale: {
+      title: "Flash Sale",
+      description: "Items on sale",
+      ogImage: "preview.png",
+    },
+    life: {
+      title: "Life Lately",
+      description: "eat, gym, code, travel, capture, repeat",
+      ogImage: "preview.png",
+    },
   },
 }
 
@@ -202,4 +212,31 @@ export const Favlinks = [
     description: "Anand Chitipothu #FOSSHack2020 | FOSS United | FOSS in India",
     avatar: "/links/youtube.svg",
   },
+]
+
+
+export const captures = [
+  "https://lh3.googleusercontent.com/pw/AP1GczPBJ-P94OtlKTvmTnLIOD1-0DEj2Xwq7bxtLKG-27CVuR2ye_t-SKv-S3qAldoIdgetzgb-nH33l9gSXsQkF6-650v9YsDUnRAKNiVRIPuiRHTOhOXb=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczP7wsGXCf_TAO86_J1pwm_AEgzSE4DScgjX4u9kpCtr5EFoz5iL_M-ILrbinCXyxpQBf7KuzaHQWiCRqpCWzGBC9Yrp4bRzZWOehRkRE5-d3Eyh57jO=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOn8tkxVyEmbwTVQyyT3UiPdgcbbu3-6lX23pNAl_RmOWQc1HZrpR05sR8o4JsPy4dxCoojm0PLxjPdBUB_aA5f9-Rk_NONWYm882rADumzL6a-0uoC=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOwdkrWEJEHFNkYKW3R_vTt3PEVx9v1hCJwR17ix8wSopKLB7sWxQso8CZPUPpWpnSDOnz53M8X5yJ9kz4Lr8-O0CwWDWS8f17xQYkQlyJeVn2MIn4Y=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczM1iPqRIPMkVJupEPn7fiUu-q6A6gCVy_op6n1HlRjzkBcw9gKmP3QigY2Du3ez05G5XtvMURFnyassMNvUqp1rkeZr17J041y9F8UunR3dQazYuEOP=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczMlpFGthQXk4b8iLcLEuhz77OjQXn1MmWanjWlzp27_CWlYiN5N00ILFPPQgzrrrpZI-0BELZeKcJMz2ihjxGRTc0RG9chDe0DFuyDxLTrHrSPcOQEE=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczO_SMR8WgpMDKj7iyZNgXQgH6Uvx-rWpRxzTTE63ERqpFoKyTt3ovqm_qLUipsCiDkhJZoEEpVGGjWK4DczgKEIduGnZeJBcNL1jiR1Tq3TEly4dXdJ=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczP9rihrW3kr7uoe1FCP3FsHurpbjQE9FauchC3t0arELFpr0RElI54hYrfbHcH38oILyY-ClEIYFCNWVrd4JYYm4pzRPTstHFYPkOZ3nVoY4ZfXx_iH=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczM422fcz9ZZGyoqUMwHkh3t5W4JA9WLNE52QKMkYZwc4pprqF0MnBsa1ANQ1DHEJO4UvUaRk0QBXlI28_g-Z-exGaCC4cHWOK9vWgWEl5J_8jBH7XOO=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczP3DFPtetEA2aIsikAbCclZydIJHCR8axEvl-WYaRR-B1LL4Fm83zWXh6sZM9DB3WFKxhdWg7vRNySmMWv_uTo9iEwIagabloTFvoFmhvvRRFdg_wX9=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczMZG3VYQbqeGf2hZv-HGHGJY6m8sVYW8nv9yDy1dZsw2Aj36padHyUsMgSNsaLgVYiBopOXJ-jB9GoMysTeNzgsX2ENRa1_sPl_ajPxqfTRCtCwFEvC=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczPuybJ4DyMMiQ3kKBsocLwMPEJaErLxy9X5F00TmoK_nGiu9nCktaLl59sMom7Q-IGXWSi1fYV-hmUb3CLLWZrsS_b6fzzuLjmq4DoDQKMUfDLRp1yJ=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOTOhigDdiy4MNm-2Yk2EvbNPx2pZ5RxWllfchU8JQNUYvy3sa29E1n5B46v7qSY4kz6LjQKErmXUQB43eN6erGHxqUI6qGR4tJv8vQVWbEq14NviuW=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczPyqI553eACO1nMfqyJD1-q7Uxo64Rc17t3DmfUI6h9RDqEl22aO53a87je8fSTnc5vmoVpgCFf3SmO2v2qHEY_DRT_KxLjVhBPtypW5ZXlIGzM9eVD=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczN677jtm6GHLGIbb7NpM7OM9vi4-0mg36vRk0LfDZ47_X-wJ3EnzJAB7Q-vWvwrQhxdD7nlGCt7lAio4IUER_Fu25dTaMZzi65tNprvN64sSjTCGWy2=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczMdOhSwVek_BEEUUO2-6IBfq6tuQg8XGtQJoFj7kWXp9fvQbWqG6tE4cHogdjw_wj4AUNoLPNUHHg20WUBlp0t5cpEEBG_k-3RyeSMTGRMk4MSiIJgT=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczMNns_bNYRzNb1o0cFHfFfi8GTz3TJ41nKsTN0JSymsYeb85EDFh5WXQaoHbB3g_4Mb8xXEx3dugXz3ArP7T73UxBmEiGZ6_i56JczFHsi0Tgi8pnP6=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOjX1wIcjkeHcLp3AyaeJinpgkpgq-cQFzBXdtFgmN6vajMMTUVcE2_n7JXW7p2XrxWIWN9gvEz9n6HmTz3R_n-fXMgkU3kU1X_LUFakw2RD1WE_8Oq=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOCj61ewhUsSO7zkQzY9AztWFzFwC9gYGPhyjP1iTcmPuX-vJhbaC5P448IfJEO8K_MpKKooXXqlBpsg7F4nk7LIx7Nr9qKxUL1Fk33W3U-RZEsV9-J=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczO9PbA12Xvuvlp8A3nP7RQiSYh-V52JkmmtMINSonyvUN_l-N6jPUYQ4-J2eifIgVMAG-NsyJsNNPNVgc0lOMD9RxL9O_uCU9OrnyVZvxMpVs8Iko3d=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczNbTDaK0wBYIeD8w3uLzibfwRfzXerCgQ0nPh5oP1qysSIwNVEh6Wue1FxMlFAyHo0OKe7YacXxY-JTbcKDSFROIJyNuXn30iIz9FmZh_tI1t7-qGPK=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczOMGBAUCeKlWbAv7YLnMdE49KZ1mtfksMo8BaSpILtngSnNPHYpZ2VZTjqJLkx-gkL8ZQ2vrQSNKVp6Exl29JEcq0OS1Aw0qQvF6bTl3DjaQ-mwKkVv=w2400",
+  "https://lh3.googleusercontent.com/pw/AP1GczPu8g6tEI_67nLZXiJqel1-rJys7bi2_0DmbLflYjyCCV1bMJBV4_qVfULQ0tvftoiguD3PmwfKCWoxElXmKZLnvOrF0BrNlHQa3UBt2jhTV1FyYyKo=w2400",
 ]

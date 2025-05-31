@@ -7,7 +7,7 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags } =
 
 <MainLayout>
   <article
-    class="font-body prose w-full max-w-3xl overflow-hidden dark:prose-invert"
+    class="prose w-full max-w-3xl overflow-hidden font-body dark:prose-invert"
   >
     <div class="flex flex-col gap-2">
       <h2
@@ -16,8 +16,17 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags } =
       >
         {title}
       </h2>
-      <div class="my-3 text-gray-500 dark:text-white/80">
+      <div class="text-gray-500 dark:text-white/80">
         {formatDate(pubDate)}
+      </div>
+      <div class="space-x-3 text-sm text-gray-500">
+        {
+          tags.map((tag: string) => (
+            <a href={`/tags/${tag}`} class="no-underline visited:text-purple-500/90">
+              <p class="inline-block hover:scale-105">#{tag}</p>
+            </a>
+          ))
+        }
       </div>
     </div>
 
@@ -28,7 +37,7 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags } =
     <div class="space-x-3 pb-10 text-sm text-gray-500">
       {
         tags.map((tag: string) => (
-          <a href={`/tags/${tag}`} class="no-underline">
+          <a href={`/tags/${tag}`} class="no-underline visited:text-purple-500/90">
             <p class="inline-block hover:scale-105">#{tag}</p>
           </a>
         ))
