@@ -6,9 +6,14 @@ import { captures as images } from "~/config"
   class="slides flex h-64 snap-both snap-mandatory overflow-x-scroll scroll-smooth"
 >
   {
-    images.map((src) => (
+    images.map((src, idx) => (
       <div class="flex-shrink-0 snap-center p-2">
-        <img class="h-full object-cover" src={src} />
+        <img
+          class="h-full object-cover"
+          src={src}
+          loading="lazy"
+          alt={`Photo ${idx + 1}`}
+        />
       </div>
     ))
   }
