@@ -1,15 +1,10 @@
 ---
-import Carousel from "./Carousel.astro";
+import Carousel from "./Carousel.astro"
+import Quote from "./quote.astro"
 ---
 
 <div class="my-10">
   <h3 class="my-5 text-2xl font-bold">Life</h3>
-  <p class="">
-    I am into fitness for 2 years now. Growing and glowing like never before.
-    When not coding, I am either thinking about GYM or in the GYM.
-  </p>
+  <Quote text={"I am free and that is why I am lost."} cite={"Franz Kafka"} />
   <Carousel />
-  <div class="flex justify-end">
-    <a href="/life" class="text-blue-600 hover:underline font-medium">See more &rarr;</a>
-  </div>
 </div>
