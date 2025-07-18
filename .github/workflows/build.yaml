@@ -51,7 +51,7 @@ jobs:
 
       - name: Build with Astro
         run: |
-          pnpx astro build \
+          pnpx astro@5.1.0 build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}" \
             --config astro.config.mjs
