@@ -40,7 +40,7 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
     <meta property="twitter:image" content={ogImageURL} />
 
     <!-- umami analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="69497b5a-8deb-44b7-bb2b-d6be9df1ac20"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="69497b5a-8deb-44b7-bb2b-d6be9df1ac20" data-auto-track="false"></script>
 
     <script is:inline>
       const setTheme = () => {
@@ -69,7 +69,12 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
 
       // Runs on view transitions navigation
       document.addEventListener("astro:after-swap", setTheme)
-      document.addEventListener("astro:page-load", setTheme)
+      document.addEventListener("astro:page-load", () => {
+        setTheme()
+        if (typeof window.umami !== "undefined") {
+          window.umami.track()
+        }
+      })
     </script>
 
     {transitions && <ClientRouter />}
