@@ -1,3 +1,14 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Roboto Slab Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Roboto Slab Variable";
+}
+
 /* Register your custom font family and tell the browser where to find it. */
 @font-face {
   font-family: "hwmc";
