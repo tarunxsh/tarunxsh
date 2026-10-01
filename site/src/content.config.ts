@@ -9,7 +9,7 @@ const postSchema = z.object({
   heroImage: z.string().optional(),
   ogImage: z.string().optional(),
   tags: z.array(z.string()).default(["others"]),
-  hide: z.boolean().default(false),
+  hide: z.boolean().default(false),   // draft or unpublish a post
 })
 
 const blog = defineCollection({

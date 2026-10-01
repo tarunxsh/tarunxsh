@@ -12,11 +12,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Roboto Slab Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Roboto Slab Variable";
+  --font-sans: "roboto-slab-variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "roboto-slab-variable";
 }
 
-/* Register your custom font family and tell the browser where to find it. */
+/**
+ * Register your custom font family and tell the browser where to find it.
+ * This register font-hwmc utility class.
+ */
 @font-face {
   font-family: "hwmc";
   src: url("/fonts/hwmc.otf") format("opentype");
@@ -27,7 +30,7 @@
 
 /* roboto-slab-latin-wght-normal */
 @font-face {
-  font-family: "Roboto Slab Variable";
+  font-family: "roboto-slab-variable";
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
