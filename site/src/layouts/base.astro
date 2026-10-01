@@ -46,34 +46,17 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
       const setTheme = () => {
         const theme =
           localStorage.getItem("theme") ??
-          (window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light")
-
-        if (theme === "dark") {
-          document.documentElement.classList.add("dark")
-          document.documentElement.setAttribute(
-            "data-theme",
-            "material-theme-darker",
-          )
-        } else {
-          document.documentElement.classList.remove("dark")
-          document.documentElement.setAttribute(
-            "data-theme",
-            "material-theme-lighter",
-          )
-        }
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+        document.documentElement.classList.toggle("dark", theme === "dark")
+        document.documentElement.setAttribute(
+          "data-theme",
+          theme === "dark" ? "material-theme-darker" : "material-theme-lighter",
+        )
       }
-
       setTheme()
-
-      // Runs on view transitions navigation
-      document.addEventListener("astro:after-swap", setTheme)
-      document.addEventListener("astro:page-load", () => {
-        setTheme()
-        if (typeof window.umami !== "undefined") {
-          window.umami.track()
-        }
+      document.addEventListener("astro:after-swap", setTheme)   // before browser paints
+      document.addEventListener("astro:page-load", () => {      // after browser paints
+        window.umami?.track()
       })
     </script>
 

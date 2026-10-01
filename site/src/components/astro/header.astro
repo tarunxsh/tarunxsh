@@ -1,8 +1,8 @@
 ---
 import { Rss } from "lucide-react"
-import { ThemeToggle } from "~/components/react/theme-toggle"
 import { RSS_ENABLED, SITE_TITLE, SOCIAL_LINKS } from "~/config"
 import Icon from "./icon.astro"
+import ThemeToggle from "./theme-toggle.astro"
 ---
 
 <header class="flex h-24 w-full select-none items-center justify-between">
@@ -29,6 +29,6 @@ import Icon from "./icon.astro"
         <Icon icon={icon} link={link} class="hidden md:block" />
       ))
     }
-    <ThemeToggle client:load />
+    <ThemeToggle />
   </div>
 </header>

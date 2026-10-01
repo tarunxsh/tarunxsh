@@ -1,0 +1,26 @@
+---
+import { Sun, Moon } from "lucide-react"
+---
+<button
+  id="theme-toggle"
+  data-umami-event="theme-toggle"
+  aria-label="Toggle theme"
+  title="Toggle theme"
+>
+  <Sun className="transform transition duration-500 hover:-rotate-45 dark:hidden" />
+  <Moon className="hidden transform transition duration-500 hover:-rotate-45 dark:block" />
+</button>
+
+<script>
+  document.addEventListener("click", (e) => {
+    if ((e.target as Element).closest("#theme-toggle")) {
+      const isDark = document.documentElement.classList.toggle("dark")
+      const theme = isDark ? "dark" : "light"
+      localStorage.setItem("theme", theme)
+      document.documentElement.setAttribute(
+        "data-theme",
+        isDark ? "material-theme-darker" : "material-theme-lighter",
+      )
+    }
+  })
+</script>
