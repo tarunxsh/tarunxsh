@@ -16,6 +16,12 @@ export default defineConfig({
     worker: {
       plugins: () => [],
     },
+    server: {
+      fs: {
+        // Allow serving files from one level up
+        allow: ['..']
+      }
+    }
   },
   integrations: [
     react(),
