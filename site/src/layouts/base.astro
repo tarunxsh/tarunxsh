@@ -60,7 +60,8 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
       }, { once: true })
       document.addEventListener("astro:after-swap", setTheme)   // before browser paints
       document.addEventListener("astro:page-load", () => {      // after browser paints
-        window.umami?.track()
+        // track page view with umami analytics
+        window.umami?.track(props => ({ ...props, url: window.location.pathname, title: document.title }))
       })
     </script>
 
