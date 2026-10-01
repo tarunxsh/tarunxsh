@@ -7,14 +7,9 @@ const posts = await getPosts()
 // @ts-ignore
 const pages = Object.fromEntries(posts.map(({ id, data }) => [id, { data }]))
 
-export const { getStaticPaths, GET } = OGImageRoute({
-  // The name of your dynamic route segment.
-  // In this case it’s `route`, because the file is named `[...route].ts`.
-  param: "route",
-
-  // A collection of pages to generate images for.
+// Generates OG images at /og/<post-id>.png, e.g. /og/learning-astro.png
+export const { getStaticPaths, GET } = await OGImageRoute({
   pages,
-  // For each page, this callback will be used to customize the OG image.
   getImageOptions: async (_, { data }: (typeof pages)[string]) => {
     return {
       title: data.title,
@@ -32,4 +27,3 @@ export const { getStaticPaths, GET } = OGImageRoute({
   },
 })
 
-// dynamically generate og image for each post using post data
