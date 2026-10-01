@@ -1,0 +1,55 @@
+---
+interface Props {
+  spotlight?: boolean
+  spotlightRadius?: number
+}
+const { spotlight = false, spotlightRadius = 250 } = Astro.props
+
+const grid = {
+  size: 15,
+  strokeWidth: 1,
+}
+const gridPath = `M ${grid.size} 0 L 0 0 0 ${grid.size}`
+---
+<div class="fixed inset-0 z-[-1] overflow-hidden">
+  <!-- dim base grid, always visible -->
+  <svg class="absolute h-full w-full opacity-5" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid-base" width={grid.size} height={grid.size} patternUnits="userSpaceOnUse">
+        <path d={gridPath} fill="none" stroke="currentColor" stroke-width={grid.strokeWidth} />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid-base)" />
+  </svg>
+
+  {spotlight && (
+    <svg
+      id="grid-spotlight"
+      class="absolute h-full w-full opacity-60"
+      data-radius={spotlightRadius}
+      style={`mask-image: radial-gradient(circle ${spotlightRadius}px at -9999px -9999px, black, transparent)`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <pattern id="grid-bright" width={grid.size} height={grid.size} patternUnits="userSpaceOnUse">
+          <path d={gridPath} fill="none" stroke="currentColor" stroke-width={grid.strokeWidth} />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid-bright)" />
+    </svg>
+  )}
+</div>
+
+{spotlight && (
+  <script>
+    const el = document.getElementById("grid-spotlight")
+    const radius = el?.dataset.radius ?? "100"
+
+    document.addEventListener("mousemove", (e) => {
+      el?.style.setProperty(
+        "mask-image",
+        `radial-gradient(circle ${radius}px at ${e.clientX}px ${e.clientY}px, black, transparent)`
+      )
+    })
+  </script>
+)}
