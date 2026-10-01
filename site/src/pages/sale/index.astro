@@ -1,9 +1,18 @@
 ---
 import { META } from "~/config"
-import Items from "./_items.mdx"
 import MainLayout from "~/layouts/main.astro"
+import Table from "~/components/astro/Table.astro"
+import { data } from "./_data"
+import type { Column } from "~/components/astro/Table.astro"
 
 const pageMeta = META.pageMeta
+
+const columns: Column[] = [
+  { key: "name",   label: "Name" },
+  { key: "price",  label: "Price",  type: "price",  mrpKey: "mrp" },
+  { key: "status", label: "Status", type: "badge",   badgeMap: { Available: "green", Sold: "red" } },
+  { key: "tags",   label: "Tags",   type: "tags" },
+]
 ---
 
 <MainLayout
@@ -11,9 +20,15 @@ const pageMeta = META.pageMeta
   description={pageMeta.sale.description}
   ogImage={pageMeta.sale.ogImage}
 >
-  <div class="prose max-w-3xl dark:prose-invert">
-    <Items />
+  <div class="max-w-3xl">
+    <h3 class="mb-1 text-2xl font-bold">Clearance Sale</h3>
+    <p class="mb-6 text-sm text-neutral-600 dark:text-neutral-400">
+      Interested? Whatsapp me at +91 9654016094
+    </p>
+    <Table
+      columns={columns}
+      data={data}
+      searchPlaceholder="Search by name, status, tag, price..."
+    />
   </div>
-  
-
 </MainLayout>

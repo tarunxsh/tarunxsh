@@ -182,3 +182,74 @@ Files in `src/pages/` that export `GET`, `POST` etc. instead of a component -- u
 ### Props and Type Safety
 
 Component props are typed via `interface Props` in the frontmatter. Astro infers and validates them at build time -- no runtime overhead.
+
+### MDX
+
+MDX is Markdown with JSX -- you write prose in Markdown syntax and can drop React (or any framework) components inline. Astro supports it via `@astrojs/mdx`.
+
+```mdx
+### My Heading
+
+Some paragraph text here.
+
+<MyComponent data={someData} client:load />
+
+More prose after the component.
+```
+
+**When MDX is the right choice**
+
+- Pages that are mostly *content* with occasional interactive components (blog posts, docs, tutorials)
+- Non-developers need to edit the content -- `.mdx` is friendlier than `.astro` or JSX
+- Many similar pages managed via content collections (e.g. every blog post is an `.mdx` file with frontmatter)
+
+**When to skip MDX and use `.astro` instead**
+
+- The page is mostly a *layout or component* with only a small amount of text
+- The text is a few lines and lives in only one place -- inline it directly
+- No non-developer authors and no frontmatter metadata needed
+
+**The rough rule**
+
+> If a page is mostly content with occasional components, use `.mdx`. If it is mostly a component with occasional text, use `.astro`.
+
+---
+
+## Astro vs Other Frameworks
+
+**The core question each framework answers differently: "when does JS run?"**
+
+**React** -- UI is JS, always. The entire page is a JS application. Even "static" content is rendered by JS in the browser (CSR) or hydrated from a server string (SSR). The component tree lives in memory at runtime. DOM = a side effect of state.
+
+**Vue** -- same model, gentler DX. Same runtime component tree as React. Reactivity is built into the object system (`ref`, `reactive`) rather than hooks. Closer to the HTML mental model but fundamentally the same architecture.
+
+**Solid** -- React's model, no virtual DOM. Signals compile to direct DOM updates. No diffing, no re-renders of the whole tree -- just the exact node that changed. Still ships a runtime, still owns the DOM. Fastest of the JS-runtime group.
+
+**Svelte** -- compiles away the framework. No runtime shipped. Components compile to vanilla JS that manipulates the DOM directly. Closest to Astro's output, but still assumes the whole page is a Svelte app.
+
+**Next.js** -- React on a server. SSR/SSG via React's own hydration -- the full React tree ships to the browser and re-hydrates. The server is a React concern, not a routing/content concern.
+
+**Remix** -- server as the primary thing. Web fundamentals first (forms, fetch, HTTP). React is the view layer but the server owns data flow. Full page hydration still happens -- React still ships.
+
+**Astro -- content is HTML, JS is optional per region**
+
+Every other framework above starts from: *"the page is a component tree."*
+
+Astro starts from: *"the page is HTML. Add JS only where the user needs to interact."*
+
+```
+React/Vue/Solid/Svelte/Next/Remix
+  page = component tree → renders to HTML + hydrates back to component tree
+
+Astro
+  page = HTML → stays HTML
+  interactive region = island → ships only that island's JS
+```
+
+Build-time values (a color map, a config object, a formatted date) are evaluated during `astro build`, written into the HTML, and thrown away -- they never reach the browser. React needs them at runtime to re-render. This is why Astro frontmatter code has zero cost in production.
+
+**Why Astro chose this**
+
+Most websites are 80% content (blogs, docs, marketing, portfolios) and 20% interactive (search, forms, carousels). Every framework before Astro was optimized for the 20% and made the 80% pay the cost. Astro flipped the default.
+
+The tradeoff: if the whole page needs reactive state (a dashboard, a rich editor, a game), Astro's islands model is awkward -- Next or Remix would be a better fit. Astro wins when content is the primary thing and interactivity is the exception.

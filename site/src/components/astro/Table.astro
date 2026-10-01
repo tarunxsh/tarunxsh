@@ -1,0 +1,138 @@
+---
+export interface Column {
+  key: string
+  label: string
+  type?: "text" | "tags" | "badge" | "price"
+  badgeMap?: Record<string, "green" | "red" | "yellow" | "gray">
+  mrpKey?: string
+}
+
+interface Props {
+  columns: Column[]
+  data: Record<string, any>[]
+  searchPlaceholder?: string
+}
+
+const { columns, data, searchPlaceholder = "Search..." } = Astro.props
+
+const badgeClass: Record<string, string> = {
+  green: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400",
+  red:   "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400",
+  yellow:"bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400",
+  gray:  "bg-black/5 text-neutral-600 dark:bg-white/5 dark:text-neutral-400",
+}
+
+function searchText(row: Record<string, any>) {
+  return columns
+    .flatMap((col) => {
+      const v = row[col.key]
+      const extras = col.mrpKey ? [row[col.mrpKey]] : []
+      return Array.isArray(v) ? [...v, ...extras] : [v, ...extras]
+    })
+    .join(" ")
+    .toLowerCase()
+}
+---
+
+<div>
+  <!-- search -->
+  <div class="mb-4 flex items-center gap-2 rounded-lg border border-black/10 bg-black/5 px-3 py-2 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-neutral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+    </svg>
+    <input
+      id="table-search"
+      type="text"
+      placeholder={searchPlaceholder}
+      class="w-full bg-transparent text-sm focus:outline-none placeholder:text-neutral-500 dark:text-neutral-100"
+    />
+  </div>
+
+  <!-- table -->
+  <div class="overflow-x-auto rounded-lg border border-black/10 bg-white dark:border-white/10 dark:bg-neutral-950">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-black/10 bg-neutral-100 text-left dark:border-white/10 dark:bg-neutral-900">
+          {columns.map((col) => (
+            <th class="px-4 py-3 font-medium">{col.label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row) => (
+          <tr
+            class="table-row border-b border-black/5 transition-colors last:border-0 hover:bg-neutral-50 dark:border-white/5 dark:hover:bg-neutral-900"
+            data-search={searchText(row)}
+          >
+            {columns.map((col) => {
+              const val = row[col.key]
+
+              if (col.type === "tags") {
+                const tags: string[] = Array.isArray(val) ? val : [val]
+                return (
+                  <td class="px-4 py-3">
+                    <div class="flex flex-wrap gap-1">
+                      {tags.map((tag) => (
+                        <span class="rounded-md border border-black/10 bg-black/5 px-2 py-0.5 text-xs font-medium backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                )
+              }
+
+              if (col.type === "badge") {
+                const color = col.badgeMap?.[val] ?? "gray"
+                return (
+                  <td class="px-4 py-3">
+                    <span class={`rounded-md px-2 py-0.5 text-xs font-medium ${badgeClass[color]}`}>
+                      {val}
+                    </span>
+                  </td>
+                )
+              }
+
+              if (col.type === "price") {
+                const mrp = col.mrpKey ? row[col.mrpKey] : null
+                return (
+                  <td class="px-4 py-3">
+                    <span>{val}</span>
+                    {mrp && (
+                      <span class="ml-1.5 text-xs text-neutral-500 line-through dark:text-neutral-500">
+                        {mrp}
+                      </span>
+                    )}
+                  </td>
+                )
+              }
+
+              return <td class="px-4 py-3 text-neutral-800 dark:text-neutral-200">{val}</td>
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <p id="table-empty" class="hidden py-8 text-center text-sm text-neutral-500">
+      No items match your search.
+    </p>
+  </div>
+</div>
+
+<script>
+  const input = document.getElementById("table-search") as HTMLInputElement | null
+  const rows = document.querySelectorAll<HTMLTableRowElement>(".table-row")
+  const empty = document.getElementById("table-empty")
+
+  input?.addEventListener("input", () => {
+    const q = input.value.toLowerCase()
+    let visible = 0
+    rows.forEach((row) => {
+      const match = !q || (row.dataset.search ?? "").includes(q)
+      row.style.display = match ? "" : "none"
+      if (match) visible++
+    })
+    empty?.classList.toggle("hidden", visible > 0)
+  })
+</script>
