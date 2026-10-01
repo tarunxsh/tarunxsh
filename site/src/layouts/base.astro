@@ -54,6 +54,10 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
         )
       }
       setTheme()
+      document.documentElement.style.visibility = 'hidden'
+      window.addEventListener('load', () => {
+        requestAnimationFrame(() => { document.documentElement.style.visibility = '' })
+      }, { once: true })
       document.addEventListener("astro:after-swap", setTheme)   // before browser paints
       document.addEventListener("astro:page-load", () => {      // after browser paints
         window.umami?.track()
