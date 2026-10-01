@@ -1,16 +1,32 @@
 ---
 import { skills } from "~/config/index"
+
+const half = Math.ceil(skills.length / 2)
+const row1 = skills.slice(0, half)
+const row2 = skills.slice(half)
 ---
 
 <div class="my-10">
   <h3 class="my-5 text-2xl font-bold">Skills</h3>
-  <div class="flex flex-wrap gap-4">
-    {
-      skills.map((skill) => (
-        <li class="min-w-24 list-none rounded border-2 p-2 text-center transition hover:scale-110">
-          <a href="">{skill}</a>
-        </li>
-      ))
-    }
+  <div class="group overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <!-- row 1: scrolls left -->
+    <div class="flex w-max animate-[marquee_20s_linear_infinite] gap-4 pb-4 group-hover:[animation-play-state:paused]">
+      {[...row1, ...row1].map((skill) => (
+        <span class="min-w-24 rounded-lg border border-black/10 bg-black/5 px-4 py-2 text-center text-sm font-medium backdrop-blur-sm transition-colors hover:border-black/40 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/40">{skill}</span>
+      ))}
+    </div>
+    <!-- row 2: scrolls right -->
+    <div class="flex w-max animate-[marquee_20s_linear_infinite_reverse] gap-4 group-hover:[animation-play-state:paused]">
+      {[...row2, ...row2].map((skill) => (
+        <span class="min-w-24 rounded-lg border border-black/10 bg-black/5 px-4 py-2 text-center text-sm font-medium backdrop-blur-sm transition-colors hover:border-black/40 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/40">{skill}</span>
+      ))}
+    </div>
   </div>
 </div>
+
+<style>
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
