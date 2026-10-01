@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Keep SPA routing via ClientRouter but disable all page transition animations */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation: none;
+}
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
