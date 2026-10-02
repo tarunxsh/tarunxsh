@@ -12,10 +12,10 @@
 
 @layer utilities {
   .type-page-title {
-    @apply text-3xl font-semibold;
+    @apply md:mt-10 text-4xl font-semibold;
   }
   .type-section-heading {
-    @apply text-2xl font-bold my-5;
+    @apply text-2xl font-bold mb-5;
   }
   .font-body {
     @apply md:text-lg font-roboto-slab-serif;

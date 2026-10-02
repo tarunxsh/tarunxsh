@@ -15,12 +15,12 @@ const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
   ogImage={openGraphImage}
 
 >
-  <main class="flex w-full max-w-3xl flex-col pb-10">
+  <main class="flex w-full max-w-3xl flex-col">
     {showHeader && <Header />}
     <div class="lg:hidden">
       <Navigation />
     </div>
-    <div class="mt-10 flex-1">
+    <div class="mt-5 flex-1">
       <slot />
     </div>
     <Footer />

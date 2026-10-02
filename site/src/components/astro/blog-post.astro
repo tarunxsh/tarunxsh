@@ -10,9 +10,9 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags } =
   <article
     class="prose w-full max-w-3xl overflow-hidden dark:prose-invert"
   >
-    <div class="flex flex-col gap-2">
+    <div class="not-prose flex flex-col gap-1">
       <h2
-        class="!my-0 type-page-title"
+        class="type-page-title mb-5"
         transition:name={`post-title-${id}`}
       >
         {title}

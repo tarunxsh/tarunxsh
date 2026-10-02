@@ -10,8 +10,8 @@ const { tags, class: className = "" } = Astro.props
 <div class={`space-x-3 text-sm text-gray-500 ${className}`}>
   {
     tags.map((tag: string) => (
-      <a href={`/tags/${tag}`} class="no-underline visited:text-purple-500/90">
-        <p class="inline-block hover:scale-105">#{tag}</p>
+      <a href={`/tags/${tag}`} class="visited:text-purple-500/90">
+        <p class="inline-block underline hover:scale-105">#{tag}</p>
       </a>
     ))
   }
