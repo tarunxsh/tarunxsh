@@ -22,8 +22,5 @@ import { formatDate } from "~/utils"
       >{formatDate(post.data.pubDate, dateFormat)}</time
     >
   </p>
-  <div class="flex flex-col md:flex-row justify-between w-full">
-    <p class="line-clamp-2 text-lg hover:underline">{post.data.title}</p>
-
-  </div>
+  <p class="line-clamp-2 text-lg hover:underline">{post.data.title}</p>
 </a>

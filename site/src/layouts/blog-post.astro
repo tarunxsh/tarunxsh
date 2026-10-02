@@ -1,5 +1,6 @@
 ---
 import MainLayout from "~/layouts/main.astro"
+import Tags from "~/components/astro/tags.astro"
 import { formatDate } from "~/utils"
 const { id, title, description, pubDate, updatedDate, heroImage, tags } =
   Astro.props
@@ -19,29 +20,13 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags } =
       <div class="text-gray-500 dark:text-white/80">
         {formatDate(pubDate)}
       </div>
-      <div class="space-x-3 text-sm text-gray-500">
-        {
-          tags.map((tag: string) => (
-            <a href={`/tags/${tag}`} class="no-underline visited:text-purple-500/90">
-              <p class="inline-block hover:scale-105">#{tag}</p>
-            </a>
-          ))
-        }
-      </div>
+      <Tags tags={tags} />
     </div>
 
     <div class="my-6">
       <slot />
     </div>
 
-    <div class="space-x-3 pb-10 text-sm text-gray-500">
-      {
-        tags.map((tag: string) => (
-          <a href={`/tags/${tag}`} class="no-underline visited:text-purple-500/90">
-            <p class="inline-block hover:scale-105">#{tag}</p>
-          </a>
-        ))
-      }
-    </div>
+    <Tags tags={tags} class="pb-10" />
   </article>
 </MainLayout>

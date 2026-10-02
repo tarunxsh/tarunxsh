@@ -1,0 +1,32 @@
+---
+import { Rss } from "lucide-react"
+import { RSS_ENABLED, SOCIAL_LINKS } from "~/config"
+import Icon from "./icon.astro"
+
+interface Props {
+  size?: number
+  iconClass?: string
+}
+
+const { size, iconClass } = Astro.props
+---
+
+{
+  RSS_ENABLED && (
+    <a
+      href="/rss.xml"
+      target="_blank"
+      data-umami-event="rss"
+      aria-label="RSS"
+      title="RSS"
+      class="transition-colors hover:text-red-500"
+    >
+      <Rss size={size} />
+    </a>
+  )
+}
+{
+  Object.entries(SOCIAL_LINKS).map(([icon, link]) => (
+    <Icon icon={icon} link={link} size={size} class={iconClass} />
+  ))
+}

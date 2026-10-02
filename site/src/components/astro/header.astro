@@ -1,7 +1,6 @@
 ---
-import { Rss } from "lucide-react"
-import { RSS_ENABLED, SITE_TITLE, SOCIAL_LINKS } from "~/config"
-import Icon from "./icon.astro"
+import { SITE_TITLE } from "~/config"
+import SocialLinks from "./social-links.astro"
 import ThemeToggle from "./theme-toggle.astro"
 ---
 
@@ -11,25 +10,7 @@ import ThemeToggle from "./theme-toggle.astro"
   </a>
 
   <div class="flex items-center gap-6">
-    {
-      RSS_ENABLED && (
-        <a
-          href="/rss.xml"
-          target="_blank"
-          data-umami-event="rss"
-          aria-label="RSS"
-          title="RSS"
-          class="transition-colors hover:text-red-500"
-        >
-          <Rss />
-        </a>
-      )
-    }
-    {
-      Object.entries(SOCIAL_LINKS).map(([icon, link]) => (
-        <Icon icon={icon} link={link} class="hidden md:block" />
-      ))
-    }
+    <SocialLinks iconClass="hidden md:block" />
     <ThemeToggle />
   </div>
 </header>

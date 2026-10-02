@@ -1,7 +1,6 @@
 ---
-import { Rss } from "lucide-react"
-import { OWNER, RSS_ENABLED, SOCIAL_LINKS } from "~/config"
-import Icon from "./icon.astro"
+import { OWNER } from "~/config"
+import SocialLinks from "./social-links.astro"
 const currentYear = new Date().getFullYear()
 ---
 
@@ -9,30 +8,7 @@ const currentYear = new Date().getFullYear()
   <div class="flex justify-between">
     <p>&copy; {currentYear} {OWNER.name}</p>
     <div class="social-links mt-1 flex items-center space-x-2">
-      {
-        RSS_ENABLED && (
-          <a
-            href="/rss.xml"
-            target="_blank"
-            data-umami-event="rss"
-            aria-label="RSS"
-            title="RSS"
-            class="transition-colors hover:text-red-500"
-          >
-            <Rss size={18} />
-          </a>
-        )
-      }
-      {
-        Object.entries(SOCIAL_LINKS).map(([icon, link]) => (
-          <Icon
-            icon={icon}
-            link={link}
-            size={18}
-            class="md:block"
-          />
-        ))
-      }
+      <SocialLinks size={18} iconClass="md:block" />
     </div>
   </div>
   <hr class="mt-1" />
