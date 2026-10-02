@@ -5,6 +5,8 @@ import { getPosts } from "~/utils"
 
 export async function getStaticPaths() {
   const posts = await getPosts()
+
+  // Generate data for each post path based on its slug
   const paths = posts.map((post: any) => ({
     params: { slug: post.id },
     props: { post },

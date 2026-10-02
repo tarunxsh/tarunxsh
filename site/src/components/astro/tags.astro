@@ -1,13 +1,12 @@
 ---
 interface Props {
   tags: string[]
-  class?: string
 }
 
-const { tags, class: className = "" } = Astro.props
+const { tags } = Astro.props
 ---
 
-<div class={`space-x-3 text-sm text-gray-500 ${className}`}>
+<div class={`space-x-3 text-sm text-gray-500`}>
   {
     tags.map((tag: string) => (
       <a href={`/tags/${tag}`} class="visited:text-purple-500/90">
