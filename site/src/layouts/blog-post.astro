@@ -10,25 +10,27 @@ const { id, title, description, pubDate, updatedDate, heroImage, tags, headings 
 <MainLayout showHeader={false} stickyAside={false}>
   <TableOfContents slot="toc" headings={headings} />
   <article
-    class="prose w-full max-w-3xl overflow-hidden dark:prose-invert"
+    class="w-full max-w-3xl overflow-hidden prose dark:prose-invert "
   >
-    <div class="not-prose flex flex-col gap-1">
+    <div class="flex flex-col gap-1">
       <h2
         class="type-page-title mb-5"
         transition:name={`post-title-${id}`}
       >
         {title}
       </h2>
-      <div class="text-gray-500 dark:text-white/80">
-        {formatDate(pubDate)}
+      <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-white/80">
+        <span>{formatDate(pubDate)}</span>
+        <Tags tags={tags} />
       </div>
-      <Tags tags={tags} />
     </div>
 
-    <div class="my-6">
+    <div class="">
       <slot />
     </div>
 
-    <Tags tags={tags} />
+    <div>
+      <Tags tags={tags} />
+    </div>
   </article>
 </MainLayout>
