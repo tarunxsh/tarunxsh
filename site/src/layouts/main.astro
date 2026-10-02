@@ -4,7 +4,7 @@ import Header from "~/components/astro/header.astro"
 import Navigation from "~/components/astro/nav.astro"
 import BaseLayout from "~/layouts/base.astro"
 
-const { title, description, ogImage } = Astro.props
+const { title, description, ogImage, showHeader = true } = Astro.props
 const filename = Astro.url.pathname.split("/").filter(Boolean).pop() ?? ""
 const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
 ---
@@ -16,11 +16,13 @@ const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
 
 >
   <main class="mb-10 w-full max-w-3xl">
-    <Header />
+    {showHeader && <Header />}
     <div class="lg:hidden">
       <Navigation />
     </div>
-    <slot />
+    <div class="mt-10">
+      <slot />
+    </div>
     <Footer />
   </main>
   <aside class="hidden lg:flex lg:w-44 lg:shrink-0 lg:flex-col lg:pl-8 lg:mt-24 lg:sticky lg:top-0 lg:self-start">

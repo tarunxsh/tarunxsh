@@ -17,8 +17,8 @@
   .type-section-heading {
     @apply text-2xl font-bold my-5;
   }
-  .type-body {
-    @apply text-lg;
+  .font-body {
+    @apply md:text-lg font-roboto-slab-serif;
   }
 }
 
