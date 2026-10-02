@@ -125,6 +125,40 @@ The umami script uses `defer` so it is guaranteed to be loaded before `astro:pag
 
 ---
 
+### Aside Layout
+
+The page shell in `main.astro` renders two sibling elements inside a `flex justify-center` body: `<main>` for content and `<aside>` for the right panel. The aside is `hidden lg:flex` -- invisible on mobile, visible only on desktop. On mobile, navigation is rendered inline inside `<main>` with `lg:hidden`.
+
+**Sticky behavior**
+
+`main.astro` accepts a `stickyAside` prop (default `true`). When `true`, the aside gets `lg:sticky lg:self-start lg:top-8` and sticks to the top immediately on scroll -- this is the behavior for all non-blog pages.
+
+Blog post pages pass `stickyAside={false}`, which lets the aside flow normally with the page. The TOC nav element inside it carries `sticky top-8` on its own. The result:
+
+1. The nav links scroll off screen naturally
+2. When the TOC reaches the top of the viewport it sticks there
+
+**Named slot**
+
+`main.astro` exposes a named slot `toc` inside the aside. Blog posts inject a `<TableOfContents>` component into it. All other pages leave it empty -- a named slot with no content renders nothing.
+
+**Table of contents**
+
+`table-of-contents.astro` receives the `headings` array returned by Astro's `render()` function. `render(post)` extracts all headings from Markdown at build time -- no parsing at runtime. Each heading has `depth`, `slug`, and `text`. The TOC filters to `h2` and `h3`, uses `h.slug` as the anchor `href` (Astro auto-generates matching `id` attributes on rendered headings), and indents `h3` entries by `0.75rem` via inline style.
+
+The `headings` flow: `render(post)` in `[...slug].astro` → passed as prop to `BlogPost` → injected into the `toc` named slot → rendered inside the aside.
+
+**Visibility on scroll**
+
+The TOC starts `opacity-0` and fades in only when it has reached its sticky position at the top. A zero-height sentinel `div` is placed just above the TOC nav in the normal flow. An `IntersectionObserver` watches the sentinel:
+
+- Sentinel visible (user hasn't scrolled far enough) → TOC is `opacity-0`
+- Sentinel leaves the viewport (sticky has kicked in) → TOC becomes `opacity-100`
+
+Scrolling back up reverses it. The `threshold: 0` setting fires as soon as even one pixel of the sentinel crosses the viewport edge.
+
+---
+
 ## Astro Core Concepts
 
 ### Islands Architecture
@@ -153,7 +187,38 @@ Runs on every request before the page renders. Used for auth, redirects, injecti
 
 ### Image Optimization
 
-`<Image />` component that resizes, converts to WebP, and lazy loads images at build time. Zero config.
+Astro's `<Image />` component from `astro:assets` handles all optimization at build time. No runtime processing, no extra server.
+
+**What it does at build time**
+
+- Resizes to the rendered dimensions
+- Converts to WebP (or AVIF, configurable)
+- Generates a `srcset` for multiple pixel densities
+- Injects explicit `width` and `height` to prevent layout shift
+- Adds `loading="lazy"` and `decoding="async"` by default
+
+**Globbing images with `import.meta.glob`**
+
+The Carousel loads all photos from a folder at build time:
+
+```ts
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../../assets/life/*.{jpg,jpeg,JPG,JPEG,png,gif}"
+)
+const images = await Promise.all(
+  Object.values(imageModules).map((mod) => mod().then((m) => m.default))
+)
+```
+
+`import.meta.glob` is a Vite feature Astro exposes. It returns a map of file path to a lazy import function. `Promise.all` resolves them into `ImageMetadata` objects -- width, height, src, format -- which `<Image />` uses to generate the optimized output.
+
+**The `height` prop**
+
+Passing `height={256}` tells Astro the rendered height. It calculates the corresponding width to preserve the aspect ratio and generates an image at exactly that size -- no oversized downloads.
+
+**Right-click protection**
+
+The Carousel sets `draggable={false}` and `oncontextmenu="return false"` on each `<Image />` to prevent saving via right-click or drag-to-desktop.
 
 ### Actions
 
@@ -174,6 +239,44 @@ Built-in link prefetching controlled via `defaultStrategy` on `<ClientRouter />`
 ### Slots
 
 Astro's equivalent of React children. `<slot />` in a layout renders whatever the parent passes between the component tags. Named slots (`<slot name="header" />`) allow multiple injection points.
+
+**Default slot**
+
+```astro
+<!-- layout.astro -->
+<div>
+  <slot />
+</div>
+
+<!-- page.astro -->
+<Layout>
+  <p>This renders inside the slot</p>
+</Layout>
+```
+
+**Named slots**
+
+```astro
+<!-- layout.astro -->
+<aside>
+  <slot name="toc" />
+</aside>
+<main>
+  <slot />
+</main>
+
+<!-- page.astro -->
+<Layout>
+  <Nav slot="toc" />   <!-- goes into aside -->
+  <Article />          <!-- goes into main (default slot) -->
+</Layout>
+```
+
+An empty named slot renders nothing -- no wrapper element, no whitespace.
+
+**Slots do not forward through multiple layers**
+
+Content placed between `<BlogPost>` tags lands in `BlogPost`'s own `<slot />`, not in `MainLayout`'s named slots. This is why `headings` is passed as a prop to `BlogPost`, and `BlogPost` itself places `<TableOfContents slot="toc" />` directly inside `<MainLayout>` -- it owns that injection point and can reach the named slot one level up.
 
 ### Endpoints
 
@@ -212,6 +315,55 @@ More prose after the component.
 **The rough rule**
 
 > If a page is mostly content with occasional components, use `.mdx`. If it is mostly a component with occasional text, use `.astro`.
+
+---
+
+### IntersectionObserver
+
+A browser API that fires a callback whenever a target element enters or exits the viewport. No scroll event listeners, no `getBoundingClientRect()` in a loop -- the browser does the work natively and calls you only when something changes.
+
+**Basic shape**
+
+```js
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.isIntersecting   // true = visible, false = not
+    entry.intersectionRatio  // 0.0–1.0, how much is visible
+  })
+}, options)
+
+observer.observe(element)    // start watching
+observer.unobserve(element)  // stop watching one
+observer.disconnect()        // stop watching all
+```
+
+**Options**
+
+```js
+{
+  root: null,           // null = viewport (default)
+  rootMargin: "0px",    // expand/shrink the root box (like CSS margin)
+  threshold: 0          // fire when ANY pixel crosses the edge
+}
+```
+
+`rootMargin: "0px 0px -60% 0px"` shrinks the bottom of the detection zone by 60% -- useful for active-heading TOCs where you want a heading to register as active when it's in the top 40% of the screen, not just barely on screen.
+
+**The sentinel pattern**
+
+A zero-height invisible `div` is placed in the normal flow just above a sticky element. The observer watches the sentinel, not the sticky element itself:
+
+```
+┌─────────────────────────┐  ← viewport top
+│   [sentinel div]        │  ← zero-height, in normal flow
+│   [TOC nav, sticky]     │
+└─────────────────────────┘
+```
+
+- Sentinel visible → sticky hasn't kicked in → hide TOC (`opacity-0`)
+- Sentinel exits viewport → sticky is now active → show TOC (`opacity-100`)
+
+The sentinel takes up no space and is invisible -- it exists purely as a scroll position marker.
 
 ---
 

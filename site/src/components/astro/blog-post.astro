@@ -1,12 +1,14 @@
 ---
 import MainLayout from "~/layouts/main.astro"
 import Tags from "~/components/astro/tags.astro"
+import TableOfContents from "~/components/astro/table-of-contents.astro"
 import { formatDate } from "~/utils"
-const { id, title, description, pubDate, updatedDate, heroImage, tags } =
+const { id, title, description, pubDate, updatedDate, heroImage, tags, headings = [] } =
   Astro.props
 ---
 
-<MainLayout showHeader={false}>
+<MainLayout showHeader={false} stickyAside={false}>
+  <TableOfContents slot="toc" headings={headings} />
   <article
     class="prose w-full max-w-3xl overflow-hidden dark:prose-invert"
   >

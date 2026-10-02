@@ -4,7 +4,7 @@ import Header from "~/components/astro/header.astro"
 import Navigation from "~/components/astro/nav.astro"
 import BaseLayout from "~/layouts/base.astro"
 
-const { title, description, ogImage, showHeader = true } = Astro.props
+const { title, description, ogImage, showHeader = true, stickyAside = true } = Astro.props
 const filename = Astro.url.pathname.split("/").filter(Boolean).pop() ?? ""
 const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
 ---
@@ -25,7 +25,8 @@ const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
     </div>
     <Footer />
   </main>
-  <aside class="hidden lg:flex lg:w-44 lg:shrink-0 lg:flex-col lg:pl-8 lg:mt-24 lg:sticky lg:self-start">
+  <aside class:list={["hidden lg:flex lg:w-56 lg:shrink-0 lg:flex-col lg:pl-8 lg:mt-24", stickyAside && "lg:sticky lg:self-start lg:top-8"]}>
     <Navigation />
+    <slot name="toc" />
   </aside>
 </BaseLayout>
