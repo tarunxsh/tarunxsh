@@ -1,28 +1,39 @@
 ---
-import TagComponent from "~/components/astro/tag.astro"
+import type { CollectionEntry } from "astro:content"
+import MainLayout from "~/layouts/main.astro"
+import Post from "~/components/astro/post.astro"
 import { getPosts } from "~/utils"
-
-export interface Props {
-  posts: any
-  tag: string
-}
 
 export async function getStaticPaths() {
   const posts = await getPosts()
   const uniqueTags = [
-    ...new Set(posts.flatMap((post: any) => post.data.tags || [])),
+    ...new Set(posts.flatMap((post) => post.data.tags || [])),
   ]
 
-  const paths = uniqueTags.map((tag) => ({
+  return uniqueTags.map((tag) => ({
     params: { tag },
     props: {
-      posts,
       tag,
+      filteredPosts: posts.filter((post) => post.data.tags?.includes(tag)),
     },
   }))
-
-  return paths.flat()
 }
+
+const { filteredPosts, tag } = Astro.props
 ---
 
-<TagComponent {...Astro.props} />
+<MainLayout>
+  <div class="type-section-heading">#{tag}</div>
+
+  {
+    filteredPosts.length > 0 ? (
+      <ul class="space-y-4">
+        {filteredPosts.map((post: CollectionEntry<"blog">) => (
+          <Post post={post} dateFormat="YYYY-MM-DD" dateWidth="w-32" />
+        ))}
+      </ul>
+    ) : (
+      <p class="text-gray-500">No posts found for tag</p>
+    )
+  }
+</MainLayout>
