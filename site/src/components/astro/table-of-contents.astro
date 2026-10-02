@@ -18,21 +18,23 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3)
     <>
       <div id="toc-sentinel" />
       <nav id="toc" class="mt-8 sticky top-8 opacity-0 transition-opacity duration-200">
-        <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-white/40">
-          On this page
-        </p>
-        <ul class="flex flex-col gap-1">
-          {toc.map((h) => (
-            <li style={`padding-left: ${(h.depth - 2) * 0.75}rem`}>
-              <a
-                href={`#${h.slug}`}
-                class="text-sm text-gray-500 hover:text-gray-900 dark:text-white/50 dark:hover:text-white transition-colors"
-              >
-                {h.text}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <details open>
+          <summary class="mb-2 flex items-center gap-10 cursor-pointer list-none text-xs font-semibold uppercase tracking-wider underline underline-offset-2 text-gray-500 hover:text-gray-900 dark:text-white/40 dark:hover:text-white/70 transition-colors select-none">
+            On this page
+          </summary>
+          <ul class="mt-2 flex flex-col gap-1">
+            {toc.map((h) => (
+              <li style={`padding-left: ${(h.depth - 2) * 0.75}rem`}>
+                <a
+                  href={`#${h.slug}`}
+                  class="text-sm text-gray-500 hover:text-gray-900 dark:text-white/50 dark:hover:text-white transition-colors"
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
       </nav>
     </>
   )
