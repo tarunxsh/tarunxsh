@@ -1,21 +1,30 @@
 ---
-import { captures as images } from "~/config"
+import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../../assets/life/*.{jpg,jpeg,JPG,JPEG,png,gif}"
+)
+const images = await Promise.all(
+  Object.values(imageModules).map((mod) => mod().then((m) => m.default))
+)
 ---
 
 <div>
   <div
-    class="slides flex h-64 overflow-y-hidden snap-x snap-mandatory overflow-x-scroll scroll-smooth"
+    class="slides flex h-64 snap-x snap-mandatory overflow-x-scroll overflow-y-hidden scroll-smooth"
   >
     {
-      images.map((src, idx) => (
-        <div class="flex-shrink-0 snap-center p-2">
-          <img
-            class="h-full object-cover"
-            src={src}
-            loading="lazy"
-            alt={`Photo ${idx + 1}`}
-          />
-        </div>
+      images.map((img, idx) => (
+        <Image
+          class="shrink-0 snap-center h-full w-auto object-cover px-1 py-2 select-none"
+          src={img}
+          height={256}
+          loading="lazy"
+          draggable={false}
+          oncontextmenu="return false"
+          alt={`Photo ${idx + 1}`}
+        />
       ))
     }
   </div>
@@ -25,3 +34,22 @@ import { captures as images } from "~/config"
     >
   </div>
 </div>
+
+<script>
+  const slides = document.querySelector<HTMLElement>(".slides")!
+
+  const cursorLeft = "w-resize"
+  const cursorRight = "e-resize"
+
+  slides.addEventListener("mousemove", (e) => {
+    const { left, width } = slides.getBoundingClientRect()
+    slides.style.cursor = e.clientX - left < width / 2 ? cursorLeft : cursorRight
+  })
+
+  slides.addEventListener("click", (e) => {
+    const { left, width } = slides.getBoundingClientRect()
+    const x = e.clientX - left
+    const scrollAmount = width * 0.8
+    slides.scrollBy({ left: x < width / 2 ? -scrollAmount : scrollAmount, behavior: "smooth" })
+  })
+</script>

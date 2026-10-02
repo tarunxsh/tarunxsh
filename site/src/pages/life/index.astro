@@ -1,9 +1,17 @@
 ---
-import { META, captures } from "~/config"
+import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
+import { META } from "~/config"
 import MainLayout from "~/layouts/main.astro"
 
-
 const pageMeta = META.pageMeta
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../../assets/life/*.{jpg,jpeg,JPG,JPEG,png,gif}"
+)
+const images = await Promise.all(
+  Object.values(imageModules).map((mod) => mod().then((m) => m.default))
+)
 ---
 
 <MainLayout
@@ -12,12 +20,15 @@ const pageMeta = META.pageMeta
   ogImage={pageMeta.life.ogImage}
 >
   <div class="columns-2 gap-x-6">
-    {captures.map((src, idx) => (
-      <img
-        src={src}
+    {images.map((img, idx) => (
+      <Image
+        src={img}
         alt={`Photo ${idx + 1}`}
+        width={800}
         loading="lazy"
-        class="w-full h-auto mb-6 block rounded shadow-md break-inside-avoid"
+        draggable={false}
+        oncontextmenu="return false"
+        class="mb-6 block h-auto w-full break-inside-avoid rounded shadow-md select-none"
       />
     ))}
   </div>
