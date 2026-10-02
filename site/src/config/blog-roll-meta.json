@@ -1,0 +1,485 @@
+[
+  {
+    "url": "https://robertheaton.com/",
+    "title": "Robert Heaton | Blog",
+    "description": "Software engineer. One-track lover down a two-way lane",
+    "author": "",
+    "thumbnail": "https://robertheaton.com/images/icon.png"
+  },
+  {
+    "url": "https://probablydance.com/",
+    "title": "Probably Dance",
+    "description": "I can program and like games",
+    "author": "",
+    "thumbnail": "https://s0.wp.com/i/blank.jpg?m=1383295312i"
+  },
+  {
+    "url": "https://hoverbear.org/tags/",
+    "title": "Hoverbear",
+    "description": "A computer scientist working in open source towards a more hopeful future.",
+    "author": "",
+    "thumbnail": "https:&#x2F;&#x2F;hoverbear.org&#x2F;processed_images&#x2F;cover.b53fd0b932e3dab5.jpg"
+  },
+  {
+    "url": "https://lethain.com/",
+    "title": "Irrational Exuberance",
+    "description": "",
+    "author": "",
+    "thumbnail": "https://lethain.com/static/author.png"
+  },
+  {
+    "url": "https://2ality.com/",
+    "title": "2ality blog: temporarily offline",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.bryanwongyk.com/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://gagan93.me/blog/",
+    "title": "Gagandeep",
+    "description": "Posts on Engineering, Culture and Productivity",
+    "author": "",
+    "thumbnail": "https://gagan93.me/bloghttps://avatars.githubusercontent.com/u/13852061"
+  },
+  {
+    "url": "https://brunoscheufler.com/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://jackpordi.com/",
+    "title": "Jack Pordi",
+    "description": "Software Engineering Blog",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://gauravsarma.com/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://bonesmoses.org/",
+    "title": "BonesMoses.org",
+    "description": "An old tech geek with too many cats, Postgres fanatic, and gamer who never stops learning.",
+    "author": "",
+    "thumbnail": "https://bonesmoses.org/img/banner.jpg"
+  },
+  {
+    "url": "https://www.enterprisedb.com/blog",
+    "title": "Blogs | EDB",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://neon.tech/postgresql/tutorial",
+    "title": "PostgreSQL Tutorial",
+    "description": "Learn PostgreSQL quickly through a practical PostgreSQL tutorial designed for database administrators and application developers.",
+    "author": "",
+    "thumbnail": "https://neon.com/docs/og?title=UG9zdGdyZVNRTCBUdXRvcmlhbA=="
+  },
+  {
+    "url": "https://nikhilism.com/",
+    "title": "Nikhil&#39;s blog | Nikhil&#39;s blog",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://mrale.ph/",
+    "title": "Vyacheslav Egorov",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.mscharhag.com/",
+    "title": "Michael Scharhag&#39;s software development blog about Java technologies including Java EE, Spring and REST",
+    "description": "A blog about programming and software development topics, mostly focused on Java technologies including Java EE, Spring and Grails.",
+    "author": "Michael Scharhag",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://geohot.github.io/blog/",
+    "title": "the singularity is nearer",
+    "description": "A home for poorly researched ideas that I find myself repeating a lot anyway",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://blog.6nok.org/",
+    "title": "Fatih&#x27;s Personal Blog",
+    "description": "Ramblings about JavaScript, front-end development, web technologies, functional programming, software engineering and remote work.",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/",
+    "title": "Simon Tatham's quasi-blog",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://crowdhailer.me/",
+    "title": "Peter Saxton",
+    "description": "Some thoughts and opinions from Peter Saxton",
+    "author": "Peter Saxton",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://blog.startifact.com/archive/",
+    "title": "Secret Weblog",
+    "description": "Martijn Faassen&#x27;s secret weblog",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://backend.cafe/",
+    "title": "Backend Cafe",
+    "description": "A blog to discuss about Node.js Backend development. It focuses on Fastify web framework to help the community to skill up and build secure RESTful API faster.",
+    "author": "",
+    "thumbnail": "https://cdn.hashnode.com/res/hashnode/image/upload/v1634415927066/IaO_pzvse.png"
+  },
+  {
+    "url": "https://loige.co/blog/",
+    "title": "Luciano Mammino",
+    "description": "Page 1 of 8 of Luciano Mammino",
+    "author": "",
+    "thumbnail": "https://loige.co/loige-co.jpg"
+  },
+  {
+    "url": "https://adventures.nodeland.dev/archive/",
+    "title": "Adventures in Nodeland",
+    "description": "I write about my journey as a core contributor of Node.js, an author, and a maintainer of many modules - including Fastify and Pino. I will also write about my journey as the Co-Founder &amp; CTO of Platformatic. In addition, I speak at conferences and will add links to all my talks in case you missed one. If you like my Open Source work, consider sponsoring me on GitHub",
+    "author": "",
+    "thumbnail": "https://assets.buttondown.email/images/62435f32-3696-45d2-9ccf-a88ecd94795b.jpeg"
+  },
+  {
+    "url": "https://advancedweb.hu/archive.html",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://danmackinlay.name/",
+    "title": "Welcome to Dan’s brain – The Dan MacKinlay stable of variably-well-consider’d enterprises",
+    "description": "",
+    "author": "Dan MacKinlay",
+    "thumbnail": "https://danmackinlay.name/generated_thumbnails/opengraph_previews/images/punch_index.og.jpg"
+  },
+  {
+    "url": "https://tzx.notion.site/dev-blog",
+    "title": "Notion | Where teams and agents work together",
+    "description": "A collaborative AI workspace, built on your company context. Build and orchestrate agents right alongside your team",
+    "author": "",
+    "thumbnail": "https://app.notion.com/images/meta/default.png"
+  },
+  {
+    "url": "https://marcin.juszkiewicz.com.pl/archives",
+    "title": "Marcin Juszkiewicz",
+    "description": "Random mumblings of FOSS developer about porting issues, getting things running on 64-bit Arm systems, containers, tools, conferences etc.",
+    "author": "",
+    "thumbnail": "https://marcin.juszkiewicz.com.pl/files/images/hrw-192.jpg"
+  },
+  {
+    "url": "https://leandromoreira.com/",
+    "title": "Leandro Moreira",
+    "description": "Software development",
+    "author": "",
+    "thumbnail": "https://leandromoreira.com/wp-content/uploads/2020/04/cropped-screen-shot-2020-04-28-at-12.33.18-pm.png?w=200"
+  },
+  {
+    "url": "https://www.allthingsdistributed.com/articles.html",
+    "title": "Articles",
+    "description": "Werner Vogels on building scalable and robust distributed systems",
+    "author": "",
+    "thumbnail": "https://www.allthingsdistributed.com/images/wvlogo.jpg"
+  },
+  {
+    "url": "https://archive.leerob.io/blog",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://jvns.ca/",
+    "title": "Julia Evans",
+    "description": "Julia Evans",
+    "author": "Julia Evans",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://blog.pragmaticengineer.com/",
+    "title": "The Pragmatic Engineer",
+    "description": "Observations across the software engineering industry.",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://iximiuz.com/en/archive/",
+    "title": "All articles by Ivan Velichko",
+    "description": "All articles on Containers, Kubernetes, and Backend Development by Ivan Velichko",
+    "author": "Ivan Velichko",
+    "thumbnail": "https://iximiuz.com/img/avatar-280.jpeg"
+  },
+  {
+    "url": "https://qntm.org/blog",
+    "title": "Blog @ Things Of Interest",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://eli.thegreenplace.net/",
+    "title": "Eli Bendersky's website",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://blog.brush.co.nz/",
+    "title": "https://blog.brush.co.nz/",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://benhoyt.com/writings/",
+    "title": "Technical Writing",
+    "description": "Ben Hoyt is an experienced software engineer at Canonical. He and his wife and three daughters live in Christchurch, New Zealand.",
+    "author": "Ben Hoyt",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://brooker.co.za/blog/",
+    "title": "Marc Brooker's Blog - Marc's Blog",
+    "description": "",
+    "author": "Marc Brooker",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://research.swtch.com/",
+    "title": "research!rsc",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://johnnysswlab.com/",
+    "title": "Welcome to Johnny&#039;s Software Lab! - Johnny&#039;s Software Lab",
+    "description": "Welcome to Johnny&#8217;s Software Lab, a blog for all interested in fast software written in C and C++. Your program doesn&#8217;t run fast enough? You need someone to talk to about your software&#8217;s performance? You or your team want to learn to write faster software? Whatever it is, we can help you. Check out the&hellip; Read",
+    "author": "",
+    "thumbnail": "https://johnnysswlab.com/wp-content/uploads/data-cache-featured.jpg"
+  },
+  {
+    "url": "https://www.ofbizian.com/p/about.html",
+    "title": "About Me",
+    "description": "Hi, I’m Bilgin Ibryam  ( @bibryam ). I’m a product manager at Solo.io , working on agentic infrastructure with...",
+    "author": "Bilgin Ibryam",
+    "thumbnail": "https://blogger.googleusercontent.com/img/a/AVvXsEgXVybxzNbMjfufrXipNmS-Z4iHz8SJjb8QeZ2Yft8-yKwN-TUVuo0YHI67EDx5CC0xm4i2p4U5wEf7wMetiFalA5_it4gmEAHdNAQvdgak_teiXAgb_KmJ-LXwa_oI35tR44kHSHqVcNgcvf5pRdKbHKqpWFlZnFR1OABaAZnBZC-4IdK5ZSvxr_4vWiAF=w1200-h630-p-k-no-nu"
+  },
+  {
+    "url": "https://blog.sulami.xyz/posts/",
+    "title": "Archive",
+    "description": "Weak Opinions, Strongly Held",
+    "author": "Robin Schroer",
+    "thumbnail": "https:&#x2f;&#x2f;blog.sulami.xyz/favicon/android-chrome-256x256.png"
+  },
+  {
+    "url": "https://avi.im/blag/",
+    "title": "blag",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://injuly.in/blog/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://matklad.github.io/",
+    "title": "matklad",
+    "description": "matklad&#039;s Arts&amp;Crafts",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://danluu.com/culture/",
+    "title": "Culture matters",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.jeremykun.com/main-content/",
+    "title": "Main Content",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://evertpot.com/",
+    "title": "Evert",
+    "description": "",
+    "author": "",
+    "thumbnail": "https://evertpot.com/assets/cover/flower.png"
+  },
+  {
+    "url": "https://bernsteinbear.com/blog/",
+    "title": "Blog",
+    "description": "",
+    "author": "Max Bernstein",
+    "thumbnail": "https://bernsteinbear.com/favicon.ico"
+  },
+  {
+    "url": "https://vishnubharathi.codes/archives/",
+    "title": "Vishnu Bharathi",
+    "description": "👋 Hi, I am Vishnu Bharathi (aka &#96;scriptnull&#96; on the Internet). 🚢 Shipping software is my day job. Building devtools paid my bills most of the time. These days I am into backend, infra, and why not -",
+    "author": "Vishnu Bharathi",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.joshwcomeau.com/",
+    "title": "Josh W. Comeau",
+    "description": "Friendly articles and tutorials for front-end web developers. ❤️",
+    "author": "Josh W. Comeau",
+    "thumbnail": "https://www.joshwcomeau.com/opengraph-image.png?cac0cc658da9fd03"
+  },
+  {
+    "url": "https://www.allthingsdistributed.com/",
+    "title": "All Things Distributed",
+    "description": "Werner Vogels on building scalable and robust distributed systems",
+    "author": "",
+    "thumbnail": "https://www.allthingsdistributed.com/images/wvlogo.jpg"
+  },
+  {
+    "url": "https://www.michael-noll.com/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://mohitmishra786.github.io/UnderTheHood/",
+    "title": "Under the Hood: A Technical Blog Aggregator",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://yieldcode.blog/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://xeiaso.net/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://samwho.dev/",
+    "title": "samwho",
+    "description": "Personal website of Sam Rose.",
+    "author": "",
+    "thumbnail": "/images/samwho-2018-banner.png"
+  },
+  {
+    "url": "https://nadh.in/",
+    "title": "Kailash Nadh / Personal homepage",
+    "description": "Developer, Tinkerer, Absurdist",
+    "author": "",
+    "thumbnail": "https://nadh.in/static/images/thumb.jpg"
+  },
+  {
+    "url": "https://dmitry.gr",
+    "title": "Dmitry.GR: Projects",
+    "description": "Dmitry.GR: Dmitry.GR: Projects",
+    "author": "Dmitry.GR",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://anandology.com/",
+    "title": "Anand Chitipothu",
+    "description": "",
+    "author": "Anand Chitipothu",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://www.geoffreylitt.com/",
+    "title": "Geoffrey Litt",
+    "description": "",
+    "author": "",
+    "thumbnail": "https://geoffreylitt.com/images/gradient.jpg"
+  },
+  {
+    "url": "https://nat.org/",
+    "title": "Nat Friedman",
+    "description": "A few things about me",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://mrkaran.dev/",
+    "title": "Karan Sharma",
+    "description": "Writing on infrastructure, Go, self-hosting and homelabs.",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://jpetazzo.github.io/",
+    "title": "index",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://naildrivin5.com/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://zenhabits.net/archives/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://blog.gypsydave5.com/posts/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  },
+  {
+    "url": "https://jamesg.blog/",
+    "title": "",
+    "description": "",
+    "author": "",
+    "thumbnail": ""
+  }
+]

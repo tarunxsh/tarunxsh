@@ -1,8 +1,17 @@
 ---
-import { META, BLOG_ROLL, Favlinks as links } from "~/config"
+import { META, Favlinks as links } from "~/config"
+import blogRollRaw from "~/config/blog-roll-meta.json"
 import MainLayout from "~/layouts/main.astro"
 import LinkCard from "~/components/astro/link-card.astro"
 
+interface BlogEntry {
+  url: string;
+  title?: string;
+  description?: string;
+  author?: string;
+  thumbnail?: string;
+}
+const blogRoll = blogRollRaw as BlogEntry[];
 
 const pageMeta = META.pageMeta
 ---
@@ -21,15 +30,14 @@ const pageMeta = META.pageMeta
     <h3 class="type-section-heading">#BlogRoll</h3>
     <ol class="list-decimal px-10">
     {
-      BLOG_ROLL.map((link: string) => (
-        
+      blogRoll.map((entry) => (
           <li>
             <a
-              href={link}
+              href={entry.url}
               target="_blank"
               class="break-all text-blue-600 visited:text-purple-500/90 hover:underline md:my-2"
             >
-              {link}
+              {entry.title || entry.url}
             </a>
           </li>
       ))

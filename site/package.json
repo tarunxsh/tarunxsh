@@ -10,7 +10,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "fetch-links": "node --experimental-strip-types scripts/fetch-blog-roll.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
