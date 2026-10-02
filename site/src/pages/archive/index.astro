@@ -31,7 +31,7 @@ const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a))
   {
     years.map((year) => (
       <div class="year-group my-8">
-        <h2 class="my-4 text-2xl font-bold">{year}</h2>
+        <h2 class="my-4! type-section-heading">{year}</h2>
         {postsByYear[year].map((post: any) => (
           <Post post={post} dateFormat="Mm DD" dateWidth="w-20" />
         ))}

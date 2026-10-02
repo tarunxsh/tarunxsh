@@ -13,7 +13,7 @@ const filteredPosts = posts.filter((post: any) => post.data.tags?.includes(tag))
 ---
 
 <MainLayout>
-  <div class="my-9 mt-2 text-2xl font-semibold">#{tag}</div>
+  <div class="type-section-heading">#{tag}</div>
 
   {
     filteredPosts.length > 0 ? (

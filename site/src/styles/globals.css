@@ -20,6 +20,18 @@
  * Register your custom font family and tell the browser where to find it.
  * This register font-hwmc utility class.
  */
+@layer utilities {
+  .type-page-title {
+    @apply text-3xl font-semibold;
+  }
+  .type-section-heading {
+    @apply text-2xl font-bold my-5;
+  }
+  .type-body {
+    @apply text-lg;
+  }
+}
+
 @font-face {
   font-family: "hwmc";
   src: url("/fonts/hwmc.otf") format("opentype");
