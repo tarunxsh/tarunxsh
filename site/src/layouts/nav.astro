@@ -1,0 +1,44 @@
+---
+import { NAV_ITEMS } from "~/config"
+import { pathEqual } from "~/utils"
+
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "")
+const subpath = pathname.match(/[^\/]+/g)
+---
+
+<div
+  class="mt-4 flex select-none gap-4 lg:gap-2 overflow-x-auto whitespace-nowrap pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:flex-col lg:overflow-x-visible lg:whitespace-normal"
+>
+  {
+    NAV_ITEMS.map((nav) => {
+      if (!nav.enabled) return null
+      const hrefPath = nav.link.replace(import.meta.env.BASE_URL, "")
+      const isActive =
+        pathEqual(hrefPath, pathname) ||
+        pathEqual(hrefPath, subpath?.[0] || "")
+      return (
+        <a
+          href={nav.link}
+          aria-label={nav.label}
+          title={nav.label}
+          class:list={["hover:underline hover:underline-offset-4", { "nav-active": isActive }]}
+          data-umami-event="nav-home"
+        >
+          <p>{nav.label}</p>
+        </a>
+      )
+    })
+  }
+</div>
+
+<style>
+  a.nav-active {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  a:hover {
+    color: red;
+  }
+</style>

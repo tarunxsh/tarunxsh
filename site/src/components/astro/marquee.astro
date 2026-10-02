@@ -1,0 +1,30 @@
+---
+interface Props {
+  items: string[]
+}
+
+const { items } = Astro.props
+const half = Math.ceil(items.length / 2)
+const row1 = items.slice(0, half)
+const row2 = items.slice(half)
+---
+
+<div class="group overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+  <div class="flex w-max animate-[marquee_20s_linear_infinite] gap-4 pb-4 group-hover:[animation-play-state:paused]">
+    {[...row1, ...row1].map((item) => (
+      <span class="min-w-24 rounded-lg border border-black/10 bg-black/5 px-4 py-2 text-center text-sm font-medium backdrop-blur-sm transition-colors hover:border-black/40 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/40">{item}</span>
+    ))}
+  </div>
+  <div class="flex w-max animate-[marquee_20s_linear_infinite_reverse] gap-4 group-hover:[animation-play-state:paused]">
+    {[...row2, ...row2].map((item) => (
+      <span class="min-w-24 rounded-lg border border-black/10 bg-black/5 px-4 py-2 text-center text-sm font-medium backdrop-blur-sm transition-colors hover:border-black/40 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/40">{item}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
