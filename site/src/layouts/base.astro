@@ -45,8 +45,7 @@ const permalink = new URL(Astro.url.pathname, Astro.site).href
     <script is:inline>
       const setTheme = () => {
         const theme =
-          localStorage.getItem("theme") ??
-          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          localStorage.getItem("theme") ?? "dark"
         document.documentElement.classList.toggle("dark", theme === "dark")
         document.documentElement.setAttribute(
           "data-theme",
