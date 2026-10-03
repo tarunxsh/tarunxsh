@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 @import "tailwindcss";
 
-/* Keep SPA routing via ClientRouter but disable all page transition animations */
-::view-transition-group(*),
-::view-transition-old(*),
-::view-transition-new(*) {
-  animation: none;
+/* Disable View Transitions API while keeping SPA routing via ClientRouter */
+@view-transition {
+  navigation: none;
 }
 
 @plugin "@tailwindcss/typography";

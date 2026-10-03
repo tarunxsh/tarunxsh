@@ -15,7 +15,6 @@ import { formatDate } from "~/utils"
   </p>
   <a
     href={`/posts/${post.id}/`}
-    transition:name={`post-title-${post.id}`}
     data-umami-event={`post-${post.id}`}
     class="line-clamp-2 hover:underline visited:text-purple-500/90"
   >{post.data.title}</a>
