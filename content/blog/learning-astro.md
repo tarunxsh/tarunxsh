@@ -31,13 +31,19 @@ The moment the cursor touches a link, the script fires a `fetch()` for that URL 
 
 ```
 preventDefault()                        stop the browser navigating
-DOMParser.parseFromString(html)         parse the cached HTML into a Document
+fire astro:before-preparation           fetch happens here via event.loader()
+fetch(href) or cache hit                fetch new page HTML (or serve from prefetch cache)
+DOMParser.parseFromString(html)         parse HTML into a Document
 merge <head>                            deduplicate scripts and styles
-document.startViewTransition(() => {
-  replace <body>                        swap page content
-})
+fire astro:after-preparation            new document ready, transition about to start
 pushState(url)                          update the URL bar
-fire astro:after-swap                   DOM live, not yet painted
+startViewTransition(() => {
+  fire astro:before-swap                before DOM is replaced
+  swap <body>                           swap page content
+  fire astro:after-swap                 DOM live, animation still playing
+})
+........................................animation completes
+........................................browser paints real DOM
 fire astro:page-load                    painted and interactive
 ```
 
@@ -55,9 +61,7 @@ The parse is fast (microseconds) and happens only on click, not on hover. The pr
 
 | Event | When it fires | Example use cases |
 |---|---|---|
-| `astro:before-fetch` | Before `ClientRouter` fetches the next page's HTML | Show a loading indicator, cancel in-flight requests |
-| `astro:after-fetch` | After the fetch completes, before any DOM changes | Hide loading indicator, inspect raw HTML before swap |
-| `astro:before-preparation` | Before `ClientRouter` starts parsing and diffing | Log navigation start, capture current page state |
+| `astro:before-preparation` | Before `ClientRouter` fetches, parses, and merges the new page | Show a loading indicator, cancel in-flight requests, override the loader |
 | `astro:after-preparation` | After preparation is done, just before the transition starts | Modify the parsed new document before it's swapped in |
 | `astro:before-swap` | Before the DOM swap inside `startViewTransition()` | Read scroll position, copy state from old page before it's gone |
 | `astro:after-swap` | After DOM is swapped, before browser paints | Re-apply theme, reset scroll, reinitialize syntax highlighting |
@@ -67,18 +71,118 @@ The parse is fast (microseconds) and happens only on click, not on hover. The pr
 
 ### View Transitions
 
-This site uses [Astro's View Transitions](https://docs.astro.build/en/guides/view-transitions/) for smooth SPA-like navigation without a full page reload.
+Traditionally, when content changes in the browser (like filtering a grid, opening a modal, or navigating to a new URL), the browser instantly repaints the screen.
 
-`ClientRouter` is loaded in `base.astro` and enabled on all pages. When a user navigates between pages, Astro intercepts the link click, fetches the next page, and swaps the content in place.
+The View Transitions API captures a visual snapshot of the old state, updates the DOM to the new state, captures a snapshot of the new state, and smoothly cross-fades or morphs matching elements between the two.
 
-**Shared element transition**
+It works in two environments:
 
-The post title animates between the post list and the post detail page using `transition:name`:
+1. **Same-Document (SPAs)**: Triggered in JavaScript via document.startViewTransition(() => updateDOM()).
+2. **Cross-Document (MPAs)**: Triggered automatically by full-page link navigations between same-origin HTML pages.
 
-- `post.astro` -- post title in the list gets `transition:name="post-title-{id}"`
-- `blog-post.astro` -- post title in the detail page gets the same name
+Before native view transitions, animating between two different states—especially between separate HTML pages—required fragile workarounds. Now instead of tracking coordinates, you give elements a unique identifier:
 
-Astro matches these by name and morphs the element across the navigation.
+```css
+/* Card on listing page */
+.product-card-img {
+  view-transition-name: product-hero;
+}
+
+/* Image on full details page */
+.product-detail-img {
+  view-transition-name: product-hero;
+}
+```
+
+Because both elements share the same view-transition-name, the browser automatically computes the position, size, and aspect ratio differences, smoothly animating the card into the hero banner across pages without manual calculations.
+
+Even if you don't define `view-transition-name` anywhere, the page still animates, but only as a full-page cross-fade. Because by default, browsers automatically assign a transition name to the root `<html>` element
+
+```css
+/* Applied automatically by user-agent stylesheet */
+:root {
+  view-transition-name: root;
+}
+```
+
+Because :root always has a name, the browser captures two full-viewport snapshots:
+
+1. Old state: The entire outgoing screen (::view-transition-old(root))
+2. New state: The entire incoming screen (::view-transition-new(root))
+
+It then performs a default cross-fade where the old page fades from opacity: 1 to 0, and the new page fades from opacity: 0 to 1 over roughly 0.25 seconds.
+
+**How view transitions works in Astro**
+
+When a link is clicked, `ClientRouter` wraps the DOM swap in `document.startViewTransition()`:
+
+```js
+// Simplified representation
+document.startViewTransition(async () => {
+  swapHead(currentDoc.head, nextDoc.head);
+  swapBody(currentDoc.body, nextDoc.body);
+});
+```
+
+`startViewTransition()` captures the old page, runs the callback (DOM swap), captures the new state, then hands control to CSS to animate between the two captures.
+
+**`ClientRouter` does not depend on the View Transitions API**
+
+They are independent. `ClientRouter` handles SPA routing (intercepts clicks, fetches pages, swaps DOM) regardless of View Transitions support. If the browser supports View Transitions API, it wraps the swap in `startViewTransition()` for the animation overlay. If not, it does the swap directly. Disabling View Transitions does not break SPA routing.
+
+The core loop Astro ClientRouter adds:
+
+```
+hover  →  fetch() and cache HTML
+click  →  preventDefault()
+       →  parse cached HTML
+       →  merge <head>
+       →  startViewTransition(() => swap <body>)
+       →  pushState(url)
+       →  fire lifecycle events
+
+```
+
+**Disabling View Transitions entirely**
+
+Three ways, depending on what you want to disable:
+
+1. Disable animations only, keep SPA routing
+
+```css
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation: none;
+}
+```
+
+ClientRouter still works, captures still happen, pseudo-elements still created but DOM swaps instantly with no animation.
+
+2. Keep SPA routing, kill animation + captures (zero overhead)
+
+```js
+document.addEventListener('astro:before-preparation', (e) => {
+  e.viewTransition?.skipTransition()
+})
+```
+No captures, no pseudo-elements, no animation. Just instant DOM swap with full SPA routing benefits.
+
+3. Disable the View Transitions using `@view-transition` CSS
+
+`@view-transition { navigation: auto }` is a declarative way to tell the browser to automatically wrap cross-document navigations (full page loads) in a View Transition -- without any JS.
+
+```css
+@view-transition { navigation: auto }  →  opts the PAGE in (root crossfade)
+@view-transition { navigation: none }  →  opts the PAGE out (root crossfade)
+view-transition-name: foo              →  opts an ELEMENT in (individual morph)
+view-transition-name: none             →  opts an ELEMENT out entirely
+```
+
+But it has no effect when ClientRouter is used because ClientRouter does not depend on this CSS. It internally calls `document.startViewTransition()` directly from JS.
+
+**The `transition:name` flash**
+
+Elements with matching `transition:name` on both pages are pulled out of the normal page swap and given their own morph animation. Even with `animation: none`, the browser still composites them as separate layers, which can cause the element to briefly appear at its destination position before the swap settles. Fix: remove `transition:name` from both elements, or use `@view-transition { navigation: none; }`.
 
 **The four independent knobs**
 
