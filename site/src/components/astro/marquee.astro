@@ -10,19 +10,19 @@ const row2 = items.slice(third, third * 2)
 const row3 = items.slice(third * 2)
 ---
 
-<div class="group overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-  <div class="flex w-max animate-[marquee_20s_linear_infinite] gap-4 pb-4 group-hover:[animation-play-state:paused]">
-    {[...row1,...row1].map((item) => (
+<div class="hover:absolute left-0 right-0 group overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+  <div class="flex w-max animate-[marquee_25s_linear_infinite] gap-4 pb-4 group-hover:[animation-duration:40s]">
+    {[...row1,...row2,...row3].map((item) => (
       <span class="min-w-24 select-none rounded-lg border border-black/10 bg-zinc-100 px-4 py-2 text-center text-sm font-medium transition-colors hover:border-black/40 dark:border-white/10 dark:bg-zinc-800 dark:hover:border-white/40">{item}</span>
     ))}
   </div>
-  <div class="flex w-max animate-[marquee_20s_linear_infinite_reverse] gap-4 group-hover:[animation-play-state:paused]">
-    {[...row2, ...row2].map((item) => (
+  <div class="flex w-max animate-[marquee_25s_linear_infinite_reverse] gap-4 group-hover:[animation-duration:40s]">
+    {[...row2, ...row3,...row1].map((item) => (
       <span class="min-w-24 select-none rounded-lg border border-black/10 bg-zinc-100 px-4 py-2 text-center text-sm font-medium transition-colors hover:border-black/40 dark:border-white/10 dark:bg-zinc-800 dark:hover:border-white/40">{item}</span>
     ))}
   </div>
-  <div class="flex w-max animate-[marquee_20s_linear_infinite] gap-4 pt-4 group-hover:[animation-play-state:paused]">
-    {[...row3, ...row3].map((item) => (
+  <div class="flex w-max animate-[marquee_25s_linear_infinite] gap-4 pt-4 group-hover:[animation-duration:40s]">
+    {[...row3, ...row1, ...row2].map((item) => (
       <span class="min-w-24 select-none rounded-lg border border-black/10 bg-zinc-100 px-4 py-2 text-center text-sm font-medium transition-colors hover:border-black/40 dark:border-white/10 dark:bg-zinc-800 dark:hover:border-white/40">{item}</span>
     ))}
   </div>
