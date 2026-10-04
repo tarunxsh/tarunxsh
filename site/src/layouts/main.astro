@@ -6,7 +6,7 @@ import BaseLayout from "~/layouts/base.astro"
 
 const { title, description, ogImage, showHeader = true, stickyAside = true } = Astro.props
 const filename = Astro.url.pathname.split("/").filter(Boolean).pop() ?? ""
-const openGraphImage = !ogImage ? `/og/${filename}.png` : ogImage
+const openGraphImage = filename ? `/og/${filename}.png` : `/og/home.png`
 ---
 
 <BaseLayout

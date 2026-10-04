@@ -65,30 +65,35 @@ export const META = {
   slogan: "Lost in space",
   description: "Coding, Gym, Photography, Traveling",
   pageMeta: {
+    home: {
+      title: "~/tarunxsh",
+      description: "Tarunesh's personal blog and portfolio website",
+      ogImage: "",
+    },
     archive: {
       title: "All Posts",
       description: "Here are Tarunesh's all posts",
-      ogImage: "preview.png",
+      ogImage: "",
     },
     links: {
       title: "Tarunesh's Links",
       description: "Here are Tarunesh's Links",
-      ogImage: "preview.png",
+      ogImage: "",
     },
     about: {
       title: "About Me",
       description: "Here is Tarunesh's self-introduction",
-      ogImage: "preview.png",
+      ogImage: "",
     },
     sale: {
       title: "Flash Sale",
       description: "Items on sale",
-      ogImage: "preview.png",
+      ogImage: "",
     },
     life: {
       title: "Life Lately",
       description: "eat, gym, code, travel, capture, repeat",
-      ogImage: "preview.png",
+      ogImage: "",
     },
   },
 }

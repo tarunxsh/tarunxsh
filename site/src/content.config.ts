@@ -7,8 +7,7 @@ const postSchema = z.object({
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
   heroImage: z.string().optional(),
-  ogImage: z.string().optional(),
-  tags: z.array(z.string()).default(["others"]),
+tags: z.array(z.string()).default(["others"]),
   hide: z.boolean().default(false),   // draft or unpublish a post
 })
 
