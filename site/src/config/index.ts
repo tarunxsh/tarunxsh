@@ -60,7 +60,6 @@ export const NAV_ITEMS = [
 ]
 
 export const META = {
-  favicon: "/avatar.png",
   url: "https://tarunxsh.xyz",
   title: "Tarunesh",
   slogan: "Lost in space",
