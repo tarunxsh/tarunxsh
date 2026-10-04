@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
 interface Props {
   name: string
   link: string
   description: string
-  avatar: string
+  avatar: ImageMetadata
 }
 
 const { name, link, description, avatar } = Astro.props
@@ -14,9 +17,11 @@ const { name, link, description, avatar } = Astro.props
   target="_blank"
   class="group flex items-center gap-4 rounded-lg border border-black/10 bg-zinc-100 p-4 transition-colors hover:border-black/40 dark:border-white/10 dark:bg-zinc-800 dark:hover:border-white/40"
 >
-  <img
+  <Image
     src={avatar}
     alt={name}
+    width={40}
+    height={40}
     class="h-10 w-10 rounded-full object-cover dark:bg-white"
   />
   <div>

@@ -1,3 +1,8 @@
+import type { ImageMetadata } from 'astro'
+import simpplrAvatar from '../assets/links/simpplr.png'
+import laptopAvatar from '../assets/links/laptop-minimal.svg'
+import youtubeAvatar from '../assets/links/youtube.svg'
+
 export const SITE_TITLE = "~/tarunxsh"
 export const SITE_DESCRIPTION = "Hi there! (. ❛ ᴗ ❛.)"
 export const COPYRIGHT = "© 2024 PlainPage All Rights Reserved"
@@ -203,33 +208,33 @@ export const BLOG_ROLL = [
   "https://jamesg.blog/",
 ];
 
-export const links = [
+export const links: { name: string; link: string; description: string; avatar: ImageMetadata }[] = [
   {
     name: "Simpplr",
     link: "https://www.simpplr.com/integrations-apis/",
     description: "AI-powered employee experience platform",
-    avatar: "/links/simpplr.png",
+    avatar: simpplrAvatar,
   },
   {
     name: "Blogspot",
     link: "https://github.com/tarunxsh/blogspot",
     description: "The blogging platform for developers",
-    avatar: "/links/laptop-minimal.svg",
+    avatar: laptopAvatar,
   },
 ]
 
-export const Favlinks = [
+export const Favlinks: { name: string; link: string; description: string; avatar: ImageMetadata }[] = [
   {
     name: "Rejections",
     link: "https://youtu.be/bvcP4dL5mjY?t=280",
     description: "Why Chase Rejection by Advait Paliwal",
-    avatar: "/links/youtube.svg",
+    avatar: youtubeAvatar,
   },
   {
     name: "The Path to Mastery",
     link: "https://www.youtube.com/live/OFKiVEl-cYw",
     description: "Anand Chitipothu #FOSSHack2020 | FOSS United | FOSS in India",
-    avatar: "/links/youtube.svg",
+    avatar: youtubeAvatar,
   },
 ]
 
